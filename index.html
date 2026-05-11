@@ -208,8 +208,8 @@
     .svc-g4-arrow{width:40px;height:40px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;background:#fff;cursor:pointer;transition:background .22s ease,border-color .22s ease,opacity .2s ease,color .22s ease;color:#0A0A0A}
     .svc-g4-arrow:hover{background:#0A0A0A;border-color:#0A0A0A;color:#fff}
     .svc-g4-arrow:disabled{opacity:.25;pointer-events:none}
-    .svc-g4-dot{width:6px;height:6px;border-radius:999px;background:rgba(0,0,0,.18);border:none;cursor:pointer;padding:14px;background-clip:content-box;-webkit-background-clip:content-box;margin:-14px;transition:background .25s ease,width .25s cubic-bezier(.16,1,.3,1);flex-shrink:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-    .svc-g4-dot.active{width:22px;background:rgba(10,10,10,.9)}
+    .svc-g4-dot{width:6px;height:6px;border-radius:999px;background:rgba(0,0,0,.2);border:none;cursor:pointer;padding:0;margin:0;flex-shrink:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .25s ease,width .25s cubic-bezier(.16,1,.3,1)}
+    .svc-g4-dot.active{width:22px;background:rgba(10,10,10,.85)}
 
     /* ── Service accordion ── */
     .svc-row{border-top:1px solid rgba(0,0,0,.07);cursor:pointer;overflow:hidden;transition:background-color .4s cubic-bezier(.16,1,.3,1),border-color .4s ease}
@@ -342,18 +342,18 @@
 
     <!-- Stats pinned to bottom -->
     <div class="absolute bottom-8 left-0 right-0 flex justify-center z-10 px-6">
-      <div class="grid grid-cols-3 stat-strip max-w-[300px] w-full">
-        <div class="stat-item pr-5">
-          <p class="font-heading font-bold text-white text-xl leading-none mb-1.5" style="letter-spacing:-0.02em;">300+</p>
-          <p class="text-white/32 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Cars Served</p>
+      <div class="grid grid-cols-3 stat-strip w-full" style="max-width:420px;">
+        <div class="stat-item pt-5 pr-7">
+          <p class="font-heading font-bold text-white text-xl leading-none mb-2" style="letter-spacing:-0.02em;">300+</p>
+          <p class="text-white/50 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Cars Served</p>
         </div>
-        <div class="stat-item px-5">
-          <p class="font-heading font-bold text-white text-xl leading-none mb-1.5" style="letter-spacing:-0.02em;">2</p>
-          <p class="text-white/32 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Ways to Book</p>
+        <div class="stat-item pt-5 px-7">
+          <p class="font-heading font-bold text-white text-xl leading-none mb-2" style="letter-spacing:-0.02em;">2</p>
+          <p class="text-white/50 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Ways to Book</p>
         </div>
-        <div class="stat-item pl-5">
-          <p class="font-heading font-bold text-white text-xl leading-none mb-1.5" style="letter-spacing:-0.02em;">9AM</p>
-          <p class="text-white/32 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Open Daily</p>
+        <div class="stat-item pt-5 pl-7">
+          <p class="font-heading font-bold text-white text-xl leading-none mb-2" style="letter-spacing:-0.02em;">9AM</p>
+          <p class="text-white/50 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Open Daily</p>
         </div>
       </div>
     </div>
