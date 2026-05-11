@@ -150,11 +150,16 @@
     .pulse-ring{animation:pulse-ring 2.8s cubic-bezier(.16,1,.3,1) infinite}
 
     /* ── ContainerScroll hero ── */
-    .hero-section{height:104vh}
-    @media(min-width:769px){.hero-section{height:110vh}}
+    .hero-section{height:100dvh}
+    @media(min-width:769px){.hero-section{height:112vh}}
     #scroll-title{will-change:transform;transform:translateY(0px)}
     #scroll-card{will-change:transform;transform:perspective(1200px) rotateX(20deg) scale(1.05);transform-origin:center top}
-    @media(max-width:768px){#scroll-card{transform:scale(0.96)}}
+    @media(max-width:768px){
+      #scroll-card{transform:none;animation:cardEnter .9s cubic-bezier(.16,1,.3,1) .25s both}
+      #scroll-title{animation:titleEnter .8s cubic-bezier(.16,1,.3,1) .1s both}
+    }
+    @keyframes cardEnter{from{opacity:0;transform:scale(.93) translateY(18px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    @keyframes titleEnter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;animation-iteration-count:1 !important}}
 
@@ -1386,28 +1391,23 @@
 
     function lerp(a, b, t) { return a + (b - a) * t; }
 
+    // Mobile: CSS entrance animation handles everything, no scroll tracking needed
+    if (window.innerWidth <= 768) return;
+
     let raf = null;
     function tick() {
       if (raf) return;
       raf = requestAnimationFrame(() => {
         raf = null;
-        const scrolled  = window.scrollY;
-        const sectionH  = hero.offsetHeight;
-        const vh        = window.innerHeight;
-        const progress  = Math.max(0, Math.min(1, scrolled / (sectionH - vh)));
-        const isMobile  = window.innerWidth <= 768;
+        const scrolled = window.scrollY;
+        const sectionH = hero.offsetHeight;
+        const vh       = window.innerHeight;
+        const progress = Math.max(0, Math.min(1, scrolled / (sectionH - vh)));
         const ty = lerp(0, -80, progress);
         titleEl.style.transform = `translateY(${ty}px)`;
-        if (isMobile) {
-          // mobile: skip expensive 3D transform, just subtle scale
-          const scale = lerp(0.96, 1.0, progress);
-          cardEl.style.transform = `scale(${scale})`;
-        } else {
-          const scaleFrom = 1.05, scaleTo = 1.0;
-          const rotate = lerp(20, 0, progress);
-          const scale  = lerp(scaleFrom, scaleTo, progress);
-          cardEl.style.transform = `perspective(1200px) rotateX(${rotate}deg) scale(${scale})`;
-        }
+        const rotate = lerp(20, 0, progress);
+        const scale  = lerp(1.05, 1.0, progress);
+        cardEl.style.transform = `perspective(1200px) rotateX(${rotate}deg) scale(${scale})`;
       });
     }
 
