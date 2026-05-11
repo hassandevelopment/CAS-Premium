@@ -189,6 +189,21 @@
     .pkg-panel.active{display:block}
     .pkg-check{width:16px;height:16px;flex-shrink:0;margin-top:1px;opacity:.5}
 
+    /* ── Gallery4 service carousel ── */
+    #svc-carousel{scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scroll-behavior:smooth;cursor:grab}
+    #svc-carousel:active{cursor:grabbing}
+    #svc-carousel::-webkit-scrollbar{display:none}
+    .svc-slide-link{display:block;border-radius:10px;overflow:hidden;position:relative;text-decoration:none}
+    .svc-slide-link img{transition:transform .6s cubic-bezier(.16,1,.3,1);width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .svc-slide-link:hover img{transform:scale(1.06)}
+    .svc-read-arrow{transition:transform .3s cubic-bezier(.16,1,.3,1)}
+    .svc-slide-link:hover .svc-read-arrow{transform:translateX(4px)}
+    .svc-g4-arrow{width:40px;height:40px;border-radius:50%;border:1px solid rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;background:#fff;cursor:pointer;transition:background .22s ease,border-color .22s ease,opacity .2s ease,color .22s ease;color:#0A0A0A}
+    .svc-g4-arrow:hover{background:#0A0A0A;border-color:#0A0A0A;color:#fff}
+    .svc-g4-arrow:disabled{opacity:.25;pointer-events:none}
+    .svc-g4-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.14);border:none;cursor:pointer;padding:0;transition:background .2s ease,transform .2s ease;flex-shrink:0}
+    .svc-g4-dot.active{background:#0A0A0A;transform:scale(1.3)}
+
     /* ── Service accordion ── */
     .svc-row{border-top:1px solid rgba(0,0,0,.07);cursor:pointer;overflow:hidden;transition:background-color .4s cubic-bezier(.16,1,.3,1),border-color .4s ease}
     .svc-row:last-child{border-bottom:1px solid rgba(0,0,0,.07)}
@@ -349,10 +364,10 @@
 
 
 <!-- SERVICES -->
-<section id="services" class="bg-white pt-28 lg:pt-40 pb-16 lg:pb-20">
+<section id="services" class="bg-white pt-28 lg:pt-40 pb-16 lg:pb-20 overflow-hidden">
   <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
 
-    <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16 pb-8 border-b border-black/[0.07]">
+    <div class="reveal flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 lg:mb-14 pb-8 border-b border-black/[0.07]">
       <div>
         <div class="eyebrow mb-4">
           <span class="eyebrow-line bg-black"></span>
@@ -362,171 +377,178 @@
             style="font-size:clamp(2.6rem,5.5vw,4.4rem);letter-spacing:-0.035em;">
           What<br>We Do
         </h2>
+        <p class="text-black/36 text-[0.9rem] mt-4 max-w-[34ch]" style="line-height:1.74;">
+          Every service performed with precision at our Tubli studio. Drop your car off — we handle the rest.
+        </p>
       </div>
-      <p class="text-black/36 text-[0.9rem] lg:max-w-[34ch] lg:text-right" style="line-height:1.74;">
-        Every service performed with precision at our Tubli studio. Drop your car off — we handle the rest.
-      </p>
-    </div>
-
-    <!-- Service accordion -->
-    <div class="mb-16">
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">01</span>
-          <span class="svc-row-title">Wash</span>
-          <span class="svc-row-brief">Foam cannon · hand dry · rim clean · final touch spray</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">A thorough foam cannon wash followed by hand dry, rim cleaning, and a final touch spray. The foundation of every great detail — done properly.</p>
-            <span class="svc-row-badge">Exterior Care</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">02</span>
-          <span class="svc-row-title">Ceramic Wash</span>
-          <span class="svc-row-brief">Ceramic-infused formula · hydrophobic protection · gloss boost</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">A ceramic-infused wash that deposits a light hydrophobic layer over your paint — water beads, dirt slides off, gloss stays longer between washes.</p>
-            <span class="svc-row-badge">Exterior + Protection</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">03</span>
-          <span class="svc-row-title">Wax</span>
-          <span class="svc-row-brief">Hand-applied carnauba · deep gloss · UV shield</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">Hand-applied carnauba wax for a rich, warm gloss and lasting UV protection. Old school chemistry, irreplaceable results.</p>
-            <span class="svc-row-badge">Paint Protection</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">04</span>
-          <span class="svc-row-title">Polish</span>
-          <span class="svc-row-brief">Machine correction · swirls removed · paint restored</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">Machine compounding removes swirl marks, light scratches, and oxidation from clear coat. Your paint's original depth and clarity — restored.</p>
-            <span class="svc-row-badge">Paint Correction</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">05</span>
-          <span class="svc-row-title">Nano Ceramic</span>
-          <span class="svc-row-brief">Bonded coating · 2–5 year protection · glass-like finish</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">Professional ceramic coating chemically bonded to your clear coat. Hydrophobic, scratch-resistant, glass-like gloss. Protection that lasts 2 to 5 years.</p>
-            <span class="svc-row-badge">Long-Term Coating</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">06</span>
-          <span class="svc-row-title">Interior Detail</span>
-          <span class="svc-row-brief">Full deep clean · leather care · every surface</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">Full interior deep clean — carpets extracted, leather conditioned, dash and console treated, vents cleared, door pockets, headliner, and every surface in between.</p>
-            <span class="svc-row-badge">Interior</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">07</span>
-          <span class="svc-row-title">PPF</span>
-          <span class="svc-row-brief">Self-healing film · optically clear · physical armour</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">Clear paint protection film applied to high-impact panels. Self-healing against light scratches, optically invisible, guards against chips and road debris for years.</p>
-            <span class="svc-row-badge">Film Protection</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">08</span>
-          <span class="svc-row-title">Graphene</span>
-          <span class="svc-row-brief">Next-gen coating · heat dissipation · extreme repellency</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">Graphene-infused coating with superior heat dissipation and extreme water repellency. Harder, slicker, and more thermally stable than standard ceramic.</p>
-            <span class="svc-row-badge">Advanced Coating</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="svc-row reveal" onclick="toggleSvc(this)">
-        <div class="svc-row-head">
-          <span class="svc-row-num">09</span>
-          <span class="svc-row-title">Window Tinting</span>
-          <span class="svc-row-brief">Heat rejection · UV block · privacy film</span>
-          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
-        </div>
-        <div class="svc-row-body">
-          <div class="svc-row-body-inner">
-            <p class="svc-row-body-text">Professional-grade tint film applied bubble-free for significant heat rejection, UV protection, glare reduction, and privacy. Lifetime of comfort.</p>
-            <span class="svc-row-badge">Tint</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="reveal grid grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
-      <div class="relative gal-item rounded-sm overflow-hidden" style="aspect-ratio:3/4;">
-        <img src="brand_assets/cas-hero.png" alt="Porsche Panamera in CAS studio" class="w-full h-full object-cover object-[center_38%]" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-        <div class="absolute bottom-4 left-4"><span class="text-white/52 text-[0.58rem] tracking-[0.18em] uppercase font-heading font-bold">Porsche Panamera</span></div>
-      </div>
-      <div class="relative gal-item rounded-sm overflow-hidden" style="aspect-ratio:3/4;">
-        <img src="brand_assets/cas-cruiser.png" alt="Land Cruiser in CAS studio" class="w-full h-full object-cover object-[center_38%]" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-        <div class="absolute bottom-4 left-4"><span class="text-white/52 text-[0.58rem] tracking-[0.18em] uppercase font-heading font-bold">Land Cruiser</span></div>
-      </div>
-      <div class="relative gal-item rounded-sm overflow-hidden hidden lg:block" style="aspect-ratio:3/4;">
-        <img src="brand_assets/cas-bentley.png" alt="Bentley in CAS studio" class="w-full h-full object-cover object-top" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-        <div class="absolute bottom-4 left-4"><span class="text-white/52 text-[0.58rem] tracking-[0.18em] uppercase font-heading font-bold">Bentley</span></div>
+      <div class="hidden md:flex items-center gap-2 flex-shrink-0">
+        <button id="svc-prev" class="svc-g4-arrow" aria-label="Previous" disabled>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9.5 2.5l-5 5 5 5"/></svg>
+        </button>
+        <button id="svc-next" class="svc-g4-arrow" aria-label="Next">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 2.5l5 5-5 5"/></svg>
+        </button>
       </div>
     </div>
 
-    <div class="reveal pt-7 border-t border-black/[0.07] flex flex-col sm:flex-row items-center justify-between gap-6">
+  </div>
+
+  <!-- Carousel — aligns left edge to container padding, scrolls full width -->
+  <div id="svc-carousel" class="flex gap-5 overflow-x-auto select-none reveal"
+       style="padding-left:clamp(1.5rem,4.16vw,3rem);padding-right:clamp(1.5rem,4.16vw,3rem);padding-bottom:6px">
+
+    <!-- 01 Wash -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="aspect-ratio:5/4;height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-panamera.png" alt="Wash" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">Wash</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Foam cannon, hand dry, rim clean, final touch spray. The baseline of great car care.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 02 Ceramic Wash -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-genesis.png" alt="Ceramic Wash" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">Ceramic Wash</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Ceramic-infused wash that adds a hydrophobic protective layer — water beads, dirt slides off.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 03 Wax -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-bentley.png" alt="Wax" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">Wax</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Hand-applied carnauba wax for a deep wet-look gloss and lasting UV protection. Old school. Irreplaceable.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 04 Polish -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-gt3rs.png" alt="Polish" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">Polish</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Machine compounding removes swirl marks, light scratches, and oxidation. Paint clarity and depth — restored.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 05 Nano Ceramic -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-lexus.png" alt="Nano Ceramic" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">Nano Ceramic</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Ceramic coating bonded to your clear coat. Hydrophobic, scratch-resistant, glass-like gloss. 2–5 years of protection.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 06 Interior Detail -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-range-rover.png" alt="Interior Detail" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">Interior Detail</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Full deep clean — carpets extracted, leather conditioned, dash, vents, door pockets, and every surface.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 07 PPF -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-hero.png" alt="PPF" style="object-position:center 38%" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">PPF</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Self-healing paint protection film on high-impact panels. Invisible, chip-proof, road-ready armour.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 08 Graphene -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-911.png" alt="Graphene" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">Graphene</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Next-gen coating with superior heat dissipation and extreme hydrophobicity. Harder and slicker than ceramic.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 09 Window Tinting -->
+    <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
+        <img src="brand_assets/cas-cruiser.png" alt="Window Tinting" style="object-position:center 38%" />
+        <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="font-heading font-bold text-white uppercase text-lg tracking-tight mb-1.5">Window Tinting</p>
+          <p class="text-white/55 text-[.82rem] leading-snug mb-5" style="display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Professional film applied bubble-free for heat rejection, UV block, glare reduction, and privacy.</p>
+          <div class="flex items-center gap-2 text-white/50 font-heading font-bold text-[.58rem] tracking-[.16em] uppercase">
+            Book Now <svg class="svc-read-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 6.5h9M8 2.5l4 4-4 4"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- dot navigation -->
+  <div class="flex justify-center gap-2 mt-7">
+    <button class="svc-g4-dot active" aria-label="Slide 1"></button>
+    <button class="svc-g4-dot" aria-label="Slide 2"></button>
+    <button class="svc-g4-dot" aria-label="Slide 3"></button>
+    <button class="svc-g4-dot" aria-label="Slide 4"></button>
+    <button class="svc-g4-dot" aria-label="Slide 5"></button>
+    <button class="svc-g4-dot" aria-label="Slide 6"></button>
+    <button class="svc-g4-dot" aria-label="Slide 7"></button>
+    <button class="svc-g4-dot" aria-label="Slide 8"></button>
+    <button class="svc-g4-dot" aria-label="Slide 9"></button>
+  </div>
+
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <div class="reveal mt-10 pt-7 border-t border-black/[0.07] flex flex-col sm:flex-row items-center justify-between gap-6">
       <p class="text-black/36 text-[0.88rem] max-w-[44ch]" style="line-height:1.74;">Not sure which service is right for your car? Message us — we'll point you in the right direction.</p>
       <a href="https://wa.me/97332331314" target="_blank" rel="noopener"
          class="btn-ghost-dark flex-shrink-0" style="display:inline-flex;width:auto;">Ask via WhatsApp</a>
@@ -1459,6 +1481,41 @@
     window.addEventListener('mouseup',  () => { dragging = false; });
     window.addEventListener('touchend', () => { dragging = false; });
   });
+
+  // Gallery4 service carousel
+  (function () {
+    const carousel = document.getElementById('svc-carousel');
+    const prevBtn = document.getElementById('svc-prev');
+    const nextBtn = document.getElementById('svc-next');
+    const dots = document.querySelectorAll('.svc-g4-dot');
+    if (!carousel) return;
+    const slides = carousel.querySelectorAll('.svc-slide');
+    const slideW = () => slides[0] ? slides[0].offsetWidth + 20 : 320;
+
+    function updateState() {
+      const sl = carousel.scrollLeft;
+      const maxSl = carousel.scrollWidth - carousel.clientWidth;
+      if (prevBtn) prevBtn.disabled = sl <= 2;
+      if (nextBtn) nextBtn.disabled = sl >= maxSl - 2;
+      const idx = Math.min(slides.length - 1, Math.round(sl / slideW()));
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -slideW(), behavior: 'smooth' }));
+    if (nextBtn) nextBtn.addEventListener('click', () => carousel.scrollBy({ left: slideW(), behavior: 'smooth' }));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => {
+      if (!slides[i]) return;
+      carousel.scrollTo({ left: slides[i].offsetLeft - carousel.offsetLeft + carousel.scrollLeft - parseInt(getComputedStyle(carousel).paddingLeft), behavior: 'smooth' });
+    }));
+    carousel.addEventListener('scroll', updateState, { passive: true });
+
+    let dragging = false, startX = 0, scrollStart = 0;
+    carousel.addEventListener('mousedown', e => { dragging = true; startX = e.pageX; scrollStart = carousel.scrollLeft; carousel.style.cursor = 'grabbing'; });
+    window.addEventListener('mouseup', () => { dragging = false; carousel.style.cursor = 'grab'; });
+    window.addEventListener('mousemove', e => { if (!dragging) return; e.preventDefault(); carousel.scrollLeft = scrollStart - (e.pageX - startX); });
+
+    updateState();
+  })();
 
   // Service accordion
   function toggleSvc(row) {
