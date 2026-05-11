@@ -93,8 +93,9 @@
     .pkg-card:hover{transform:translateY(-8px);box-shadow:0 8px 24px rgba(0,0,0,.10),0 36px 72px rgba(0,0,0,.09)}
     .pkg-card:active{transform:translateY(-3px)}
 
-    .sz-btn{transition:background-color .18s ease,color .18s ease;min-height:44px;min-width:44px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-    .sz-btn.active{background-color:#0A0A0A;color:#fff}
+    .sz-btn{transition:background-color .18s ease,color .18s ease,border-color .18s ease;min-height:44px;min-width:44px;touch-action:manipulation;-webkit-tap-highlight-color:transparent;color:rgba(0,0,0,.5);border:1px solid transparent}
+    .sz-btn:hover{color:rgba(0,0,0,.8)}
+    .sz-btn.active{background-color:#0A0A0A;color:#fff;border-color:#0A0A0A}
     .sz-btn:active{transform:scale(.93);transition:transform .1s ease}
 
     .pillar-card{transition:background .28s cubic-bezier(.4,0,.2,1),transform .28s cubic-bezier(.4,0,.2,1)}
@@ -181,9 +182,11 @@
     .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
     .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:2px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:2rem 2.2rem}
     .flip-back{transform:rotateY(180deg)}
-    .flip-hint{font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:0;transition:opacity .3s ease}
-    .flip-card:hover .flip-hint{opacity:1}
-    @media(hover:none){.flip-hint{opacity:.45}}
+    .flip-hint{display:inline-flex;align-items:center;gap:.35rem;font-family:'Outfit',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.3rem .7rem .3rem .6rem;border-radius:999px;transition:opacity .3s ease,background .3s ease;opacity:0}
+    .flip-card:hover .flip-hint{opacity:1;background:rgba(255,255,255,.13)}
+    @media(hover:none){.flip-hint{opacity:1}}
+    @keyframes flip-pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+    @media(hover:none){.flip-card:not(.flipped) .flip-hint{animation:flip-pulse 2.4s ease-in-out infinite}}
 
     /* ── Package tabs ── */
     .pkg-tab{padding:.65rem 1.4rem;min-height:44px;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;color:rgba(0,0,0,.35);transition:background-color .18s ease,color .18s ease;cursor:pointer;border:none;background:transparent;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
@@ -749,7 +752,7 @@
                   <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
                 </div>
                 <h3 class="font-heading font-bold text-white uppercase text-[.95rem] tracking-tight leading-tight mb-2">Studio Grade<br>Products</h3>
-                <p class="flip-hint text-white/40">Tap to reveal →</p>
+                <p class="flip-hint"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Tap to flip</p>
               </div>
             </div>
             <div class="flip-face flip-back bg-white border border-black/[0.1]">
@@ -777,7 +780,7 @@
                   <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
                 </div>
                 <h3 class="font-heading font-bold text-white uppercase text-[.95rem] tracking-tight leading-tight mb-2">Studio &amp;<br>Mobile</h3>
-                <p class="flip-hint text-white/40">Tap to reveal →</p>
+                <p class="flip-hint"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Tap to flip</p>
               </div>
             </div>
             <div class="flip-face flip-back bg-white border border-black/[0.1]">
@@ -805,7 +808,7 @@
                   <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
                 </div>
                 <h3 class="font-heading font-bold text-white uppercase text-[.95rem] tracking-tight leading-tight mb-2">Fast<br>Booking</h3>
-                <p class="flip-hint text-white/40">Tap to reveal →</p>
+                <p class="flip-hint"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Tap to flip</p>
               </div>
             </div>
             <div class="flip-face flip-back bg-white border border-black/[0.1]">
@@ -833,7 +836,7 @@
                   <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
                 </div>
                 <h3 class="font-heading font-bold text-white uppercase text-[.95rem] tracking-tight leading-tight mb-2">One Standard,<br>Every Car</h3>
-                <p class="flip-hint text-white/40">Tap to reveal →</p>
+                <p class="flip-hint"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>Tap to flip</p>
               </div>
             </div>
             <div class="flip-face flip-back bg-white border border-black/[0.1]">
@@ -860,29 +863,28 @@
 <!-- REVIEWS -->
 <section id="reviews" class="grain py-28 lg:py-36" style="background:#0A0A0A;">
   <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
-    <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 lg:mb-16">
-      <div>
-        <div class="eyebrow mb-5">
-          <span class="eyebrow-line bg-white"></span>
-          <span class="text-[0.62rem] font-heading font-bold uppercase tracking-[0.18em] text-white/40">Client Reviews</span>
-        </div>
-        <h2 class="font-heading font-bold text-white leading-[1.06]"
-            style="font-size:clamp(2.4rem,5vw,4rem);letter-spacing:-0.035em;">
-          Trusted by<br>Bahrain's Car Owners
-        </h2>
+    <div class="reveal mb-14 lg:mb-16">
+      <div class="eyebrow mb-5">
+        <span class="eyebrow-line bg-white"></span>
+        <span class="text-[0.62rem] font-heading font-bold uppercase tracking-[0.18em] text-white/40">Client Reviews</span>
       </div>
-      <div class="reveal flex items-center gap-3 shrink-0">
-        <div class="text-right">
-          <p class="font-heading font-bold text-white leading-none" style="font-size:2rem;letter-spacing:-0.04em;">5.0</p>
-          <div style="color:#fff;font-size:0.78rem;letter-spacing:3px;margin:4px 0 2px;">★★★★★</div>
-          <p style="font-family:'DM Sans',sans-serif;font-size:0.68rem;color:rgba(255,255,255,.35);letter-spacing:.14em;text-transform:uppercase;">16 Google Reviews</p>
-        </div>
-        <svg class="opacity-50 shrink-0" width="36" height="36" viewBox="0 0 24 24" fill="none">
+      <h2 class="font-heading font-bold text-white leading-[1.06] mb-6"
+          style="font-size:clamp(2.4rem,5vw,4rem);letter-spacing:-0.035em;">
+        Trusted by<br>Bahrain's Car Owners
+      </h2>
+      <!-- Google trust badge — inline under heading -->
+      <div class="inline-flex items-center gap-3 px-4 py-2.5 rounded-sm" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="shrink-0">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
         </svg>
+        <div class="h-4 w-px shrink-0" style="background:rgba(255,255,255,.15);"></div>
+        <span class="font-heading font-bold text-white" style="font-size:1rem;letter-spacing:-0.02em;">5.0</span>
+        <span style="color:#fff;font-size:0.7rem;letter-spacing:2px;line-height:1;">★★★★★</span>
+        <div class="h-4 w-px shrink-0" style="background:rgba(255,255,255,.15);"></div>
+        <span style="font-family:'DM Sans',sans-serif;font-size:0.7rem;color:rgba(255,255,255,.5);letter-spacing:.06em;">16 Reviews</span>
       </div>
     </div>
   </div>
@@ -1028,9 +1030,9 @@
         <div class="flex items-center gap-3">
           <span class="text-[0.62rem] text-black/38 tracking-[0.18em] uppercase font-heading font-bold">Size:</span>
           <div class="flex gap-1 bg-white border border-black/[0.09] rounded-sm p-1" style="box-shadow:0 1px 6px rgba(0,0,0,.06);">
-            <button class="sz-btn active px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm" data-size="S" onclick="setSize('S')">S</button>
-            <button class="sz-btn px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm text-black/30" data-size="M" onclick="setSize('M')">M</button>
-            <button class="sz-btn px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm text-black/30" data-size="L" onclick="setSize('L')">L</button>
+            <button class="sz-btn active px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm" data-size="S" onclick="setSize('S')" title="Small">S</button>
+            <button class="sz-btn px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm" data-size="M" onclick="setSize('M')" title="Medium">M</button>
+            <button class="sz-btn px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm" data-size="L" onclick="setSize('L')" title="Large">L</button>
           </div>
         </div>
         <div class="flex gap-1 bg-white border border-black/[0.09] rounded-sm p-1" style="box-shadow:0 1px 6px rgba(0,0,0,.06);">
@@ -1538,9 +1540,7 @@
   // Package size toggle
   function setSize(size) {
     document.querySelectorAll('.sz-btn').forEach(btn => {
-      const active = btn.dataset.size === size;
-      btn.classList.toggle('active', active);
-      btn.classList.toggle('text-black/30', !active);
+      btn.classList.toggle('active', btn.dataset.size === size);
     });
     const prices = document.querySelectorAll('.price-display');
     prices.forEach(el => el.classList.add('fading'));
