@@ -154,12 +154,18 @@
     @media(min-width:769px){.hero-section{height:112vh}}
     #scroll-title{will-change:transform;transform:translateY(0px)}
     #scroll-card{will-change:transform;transform:perspective(1200px) rotateX(20deg) scale(1.05);transform-origin:center top}
-    @media(max-width:768px){
-      #scroll-card{transform:none;animation:cardEnter .9s cubic-bezier(.16,1,.3,1) .25s both}
-      #scroll-title{animation:titleEnter .8s cubic-bezier(.16,1,.3,1) .1s both}
+    /* desktop: restore fixed sizing */
+    @media(min-width:769px){
+      #hero-sticky{align-items:center}
+      #scroll-card{flex:none;width:min(1080px,calc(100% - 48px));height:clamp(280px,33vw,500px);margin-left:auto;margin-right:auto}
     }
-    @keyframes cardEnter{from{opacity:0;transform:scale(.93) translateY(18px)}to{opacity:1;transform:scale(1) translateY(0)}}
-    @keyframes titleEnter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+    /* mobile: CSS entrance, no scroll tracking */
+    @media(max-width:768px){
+      #scroll-card{transform:none;animation:cardEnter 1s cubic-bezier(.16,1,.3,1) .2s both}
+      #scroll-title{animation:titleEnter .75s cubic-bezier(.16,1,.3,1) 0s both}
+    }
+    @keyframes cardEnter{from{opacity:0;transform:perspective(900px) rotateX(14deg) scale(.92) translateY(28px)}to{opacity:1;transform:perspective(900px) rotateX(0deg) scale(1) translateY(0)}}
+    @keyframes titleEnter{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;animation-iteration-count:1 !important}}
 
@@ -293,16 +299,16 @@
 
 <!-- HERO (ContainerScroll) -->
 <section id="hero" class="bg-charcoal hero-section" style="position:relative;">
-  <div id="hero-sticky" class="grain bg-charcoal overflow-hidden flex flex-col items-center"
+  <div id="hero-sticky" class="grain bg-charcoal overflow-hidden flex flex-col"
        style="position:sticky;top:0;height:100dvh;">
 
     <!-- subtle radial glow -->
     <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 100% 55% at 50% 95%,rgba(255,255,255,.024) 0%,transparent 68%);pointer-events:none;z-index:0;"></div>
 
-    <!-- Title block — slides up as you scroll -->
-    <div id="scroll-title" class="relative z-10 text-center flex flex-col items-center px-6"
-         style="padding-top:clamp(80px,11vh,108px);">
-      <div class="eyebrow justify-center mb-5">
+    <!-- Title block -->
+    <div id="scroll-title" class="relative z-10 text-center flex flex-col items-center px-6 flex-shrink-0"
+         style="padding-top:clamp(72px,10vh,108px);">
+      <div class="eyebrow justify-center mb-3">
         <span class="eyebrow-line bg-white"></span>
         <span class="text-[0.62rem] tracking-[0.24em] uppercase text-white/38 font-heading font-bold">Tubli · Bahrain</span>
         <span class="eyebrow-line bg-white"></span>
@@ -311,10 +317,10 @@
           style="font-size:clamp(2.8rem,6.2vw,5.6rem);letter-spacing:-0.03em;line-height:1.04;">
         Premium<br>Car Care.
       </h1>
-      <p class="text-white/42 mt-4" style="font-size:.96rem;line-height:1.78;font-family:'DM Sans',sans-serif;max-width:36ch;">
-        Studio services and a mobile van that comes to you. One standard — exceptional.
+      <p class="text-white/42 mt-3" style="font-size:.88rem;line-height:1.7;font-family:'DM Sans',sans-serif;max-width:36ch;">
+        Studio services and a mobile van that comes to you.
       </p>
-      <div class="flex flex-wrap gap-3 mt-7 justify-center">
+      <div class="flex flex-wrap gap-3 mt-5 justify-center">
         <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-primary">
           <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.859L.065 23.455c-.094.307.012.641.27.833.142.104.308.155.474.155.108 0 .218-.021.32-.065l5.824-2.358C8.384 22.73 10.157 23.2 12 23.2 18.627 23.2 24 17.826 24 11.2 24 5.373 18.627 0 12 0zm0 21.818c-1.676 0-3.31-.42-4.752-1.215l-.339-.194-3.529 1.429 1.154-3.398-.222-.35C3.286 16.735 2.4 14.919 2.4 12c0-5.29 4.31-9.6 9.6-9.6s9.6 4.31 9.6 9.6-4.31 9.6-9.6 9.6z"/></svg>
           Book Now
@@ -326,39 +332,36 @@
       </div>
     </div>
 
-    <!-- Scroll card — unfolds from rotateX(20deg) to flat -->
-    <div id="scroll-card" class="relative z-[5] mx-auto"
-         style="margin-top:clamp(24px,3.5vh,44px);
-                width:min(1080px,calc(100% - 48px));
-                height:clamp(180px,33vw,500px);
+    <!-- Scroll card — fills all remaining space between title and stats -->
+    <div id="scroll-card" class="relative z-[5]"
+         style="flex:1;min-height:0;margin:clamp(14px,2.5vh,36px) 16px 0;
                 border-radius:10px;
                 border:1px solid rgba(255,255,255,0.1);
                 background:#0d0d0d;
                 overflow:hidden;
-                box-shadow:0 0 #0000004d,0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026,0 149px 60px #0000000a,0 233px 65px #00000003;">
+                box-shadow:0 0 #0000004d,0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026;">
       <img src="brand_assets/cas-hero.png" alt="Carbon Auto Studio" class="w-full h-full object-cover object-center" />
       <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,10,10,.6) 0%,rgba(10,10,10,.08) 55%,transparent 100%);"></div>
-      <!-- card branding bar -->
-      <div class="absolute bottom-5 left-7 right-7 flex items-center justify-between">
-        <img src="brand_assets/cas-logo1.png" alt="CAS" style="height:26px;width:auto;opacity:.85;" />
-        <span style="font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);">Premium Car Care · Bahrain</span>
+      <div class="absolute bottom-4 left-5 right-5 flex items-center justify-between">
+        <img src="brand_assets/cas-logo1.png" alt="CAS" style="height:22px;width:auto;opacity:.85;" />
+        <span style="font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.32);">Premium Car Care · Bahrain</span>
       </div>
     </div>
 
-    <!-- Stats pinned to bottom -->
-    <div class="absolute bottom-8 left-0 right-0 z-10 px-8 lg:px-16">
-      <div class="stat-strip flex items-start pt-5">
+    <!-- Stats in normal flow at bottom -->
+    <div class="z-10 flex-shrink-0 px-6 lg:px-16" style="padding-bottom:clamp(20px,4vh,36px);">
+      <div class="stat-strip flex items-start pt-4">
         <div class="flex-1 text-center">
-          <p class="font-heading font-bold text-white leading-none mb-2" style="font-size:1.35rem;letter-spacing:-0.02em;">300+</p>
-          <p class="text-white/50 text-[0.56rem] tracking-[0.16em] uppercase font-heading">Cars Served</p>
-        </div>
-        <div class="stat-item flex-1 text-center px-4">
-          <p class="font-heading font-bold text-white leading-none mb-2" style="font-size:1.35rem;letter-spacing:-0.02em;">2</p>
-          <p class="text-white/50 text-[0.56rem] tracking-[0.16em] uppercase font-heading">Ways to Book</p>
+          <p class="font-heading font-bold text-white leading-none mb-1.5" style="font-size:1.2rem;letter-spacing:-0.02em;">300+</p>
+          <p class="text-white/50 text-[0.54rem] tracking-[0.16em] uppercase font-heading">Cars Served</p>
         </div>
         <div class="stat-item flex-1 text-center">
-          <p class="font-heading font-bold text-white leading-none mb-2" style="font-size:1.35rem;letter-spacing:-0.02em;">9AM</p>
-          <p class="text-white/50 text-[0.56rem] tracking-[0.16em] uppercase font-heading">Open Daily</p>
+          <p class="font-heading font-bold text-white leading-none mb-1.5" style="font-size:1.2rem;letter-spacing:-0.02em;">2</p>
+          <p class="text-white/50 text-[0.54rem] tracking-[0.16em] uppercase font-heading">Ways to Book</p>
+        </div>
+        <div class="stat-item flex-1 text-center">
+          <p class="font-heading font-bold text-white leading-none mb-1.5" style="font-size:1.2rem;letter-spacing:-0.02em;">9AM</p>
+          <p class="text-white/50 text-[0.54rem] tracking-[0.16em] uppercase font-heading">Open Daily</p>
         </div>
       </div>
     </div>
