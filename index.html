@@ -23,8 +23,8 @@
 
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-family:'DM Sans',sans-serif}
-    body{background:#0A0A0A;color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    html{font-family:'DM Sans',sans-serif;overflow-x:hidden;max-width:100%}
+    body{background:#0A0A0A;color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100%}
     h1,h2,h3,h4,h5,h6{font-family:'Outfit',sans-serif}
     ::-webkit-scrollbar{width:4px}
     ::-webkit-scrollbar-track{background:#0A0A0A}
@@ -148,9 +148,11 @@
     .pulse-ring{animation:pulse-ring 2.8s cubic-bezier(.16,1,.3,1) infinite}
 
     /* ── ContainerScroll hero ── */
+    .hero-section{height:150vh}
+    @media(min-width:769px){.hero-section{height:220vh}}
     #scroll-title{will-change:transform;transform:translateY(0px)}
     #scroll-card{will-change:transform;transform:perspective(1200px) rotateX(20deg) scale(1.05);transform-origin:center top}
-    @media(max-width:768px){#scroll-card{transform:perspective(1200px) rotateX(20deg) scale(0.7)}}
+    @media(max-width:768px){#scroll-card{transform:scale(0.96)}}
 
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;animation-iteration-count:1 !important}}
 
@@ -281,7 +283,7 @@
 
 
 <!-- HERO (ContainerScroll) -->
-<section id="hero" class="bg-charcoal" style="height:220vh;position:relative;">
+<section id="hero" class="bg-charcoal hero-section" style="position:relative;">
   <div id="hero-sticky" class="grain bg-charcoal overflow-hidden flex flex-col items-center"
        style="position:sticky;top:0;height:100dvh;">
 
@@ -721,7 +723,7 @@
           Premium products, trained hands, a standard that doesn't change — regardless of what you drive.
         </p>
         <p style="color:rgba(0,0,0,.28);font-size:.76rem;font-family:'DM Sans',sans-serif;letter-spacing:.02em;" class="mb-10">
-          Hover each card to reveal the detail.
+          <span class="hidden lg:inline">Hover</span><span class="lg:hidden">Tap</span> each card to reveal the detail.
         </p>
         <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-charcoal mb-3">
           <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.859L.065 23.455c-.094.307.012.641.27.833.142.104.308.155.474.155.108 0 .218-.021.32-.065l5.824-2.358C8.384 22.73 10.157 23.2 12 23.2 18.627 23.2 24 17.826 24 11.2 24 5.373 18.627 0 12 0zm0 21.818c-1.676 0-3.31-.42-4.752-1.215l-.339-.194-3.529 1.429 1.154-3.398-.222-.35C3.286 16.735 2.4 14.919 2.4 12c0-5.29 4.31-9.6 9.6-9.6s9.6 4.31 9.6 9.6-4.31 9.6-9.6 9.6z"/></svg>
@@ -1021,7 +1023,7 @@
         </h2>
       </div>
       <!-- Controls: size + category tabs -->
-      <div class="reveal flex flex-wrap items-center gap-4">
+      <div class="reveal flex flex-wrap items-center gap-3 lg:gap-4">
         <div class="flex items-center gap-3">
           <span class="text-[0.62rem] text-black/38 tracking-[0.18em] uppercase font-heading font-bold">Size:</span>
           <div class="flex gap-1 bg-white border border-black/[0.09] rounded-sm p-1" style="box-shadow:0 1px 6px rgba(0,0,0,.06);">
@@ -1381,22 +1383,29 @@
 
     function lerp(a, b, t) { return a + (b - a) * t; }
 
+    let raf = null;
     function tick() {
-      const scrolled  = window.scrollY;
-      const sectionH  = hero.offsetHeight;
-      const vh        = window.innerHeight;
-      const progress  = Math.max(0, Math.min(1, scrolled / (sectionH - vh)));
-
-      const isMobile  = window.innerWidth <= 768;
-      const scaleFrom = isMobile ? 0.7  : 1.05;
-      const scaleTo   = isMobile ? 0.9  : 1.0;
-
-      const rotate = lerp(20, 0, progress);
-      const scale  = lerp(scaleFrom, scaleTo, progress);
-      const ty     = lerp(0, -100, progress);
-
-      titleEl.style.transform = `translateY(${ty}px)`;
-      cardEl.style.transform  = `perspective(1200px) rotateX(${rotate}deg) scale(${scale})`;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        const scrolled  = window.scrollY;
+        const sectionH  = hero.offsetHeight;
+        const vh        = window.innerHeight;
+        const progress  = Math.max(0, Math.min(1, scrolled / (sectionH - vh)));
+        const isMobile  = window.innerWidth <= 768;
+        const ty = lerp(0, -80, progress);
+        titleEl.style.transform = `translateY(${ty}px)`;
+        if (isMobile) {
+          // mobile: skip expensive 3D transform, just subtle scale
+          const scale = lerp(0.96, 1.0, progress);
+          cardEl.style.transform = `scale(${scale})`;
+        } else {
+          const scaleFrom = 1.05, scaleTo = 1.0;
+          const rotate = lerp(20, 0, progress);
+          const scale  = lerp(scaleFrom, scaleTo, progress);
+          cardEl.style.transform = `perspective(1200px) rotateX(${rotate}deg) scale(${scale})`;
+        }
+      });
     }
 
     window.addEventListener('scroll', tick, { passive: true });
