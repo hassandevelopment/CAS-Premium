@@ -193,7 +193,8 @@
     #svc-carousel{scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scroll-behavior:smooth;cursor:grab}
     #svc-carousel:active{cursor:grabbing}
     #svc-carousel::-webkit-scrollbar{display:none}
-    .svc-slide-link{display:block;border-radius:10px;overflow:hidden;position:relative;text-decoration:none}
+    .svc-slide{overflow:hidden;border-radius:10px}
+    .svc-slide-link{display:block;overflow:hidden;position:relative;text-decoration:none}
     .svc-slide-link img{transition:transform .6s cubic-bezier(.16,1,.3,1);width:100%;height:100%;object-fit:cover;object-position:center;display:block}
     .svc-slide-link:hover img{transform:scale(1.06)}
     .svc-read-arrow{transition:transform .3s cubic-bezier(.16,1,.3,1)}
@@ -399,7 +400,7 @@
 
     <!-- 01 Wash -->
     <div class="svc-slide" style="width:min(300px,78vw);flex-shrink:0;scroll-snap-align:start">
-      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="aspect-ratio:5/4;height:min(27rem,72vw);display:block">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="svc-slide-link" style="height:min(27rem,72vw);display:block">
         <img src="brand_assets/cas-panamera.png" alt="Wash" />
         <div class="absolute inset-0" style="background:linear-gradient(to bottom,transparent 28%,rgba(10,10,10,.5) 62%,rgba(10,10,10,.94) 100%)"></div>
         <div class="absolute inset-x-0 bottom-0 p-6">
