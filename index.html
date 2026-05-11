@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carbon Auto Studio — Premium Car Care · Bahrain</title>
+  <meta name="description" content="Premium car care in Tubli, Bahrain. Studio services and a mobile van that comes to you. Ceramic, PPF, detailing, polish, and more." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { heading:['Outfit','sans-serif'], body:['DM Sans','sans-serif'] },
+          colors: { charcoal:'#0A0A0A', 'off-white':'#F5F5F0', 'mid-gray':'#888888' },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-family:'DM Sans',sans-serif}
+    body{background:#0A0A0A;color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4,h5,h6{font-family:'Outfit',sans-serif}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:#0A0A0A}
+    ::-webkit-scrollbar-thumb{background:#222;border-radius:2px}
+    :focus-visible{outline:1.5px solid rgba(255,255,255,0.5);outline-offset:3px;border-radius:1px}
+
+    .grain{position:relative;isolation:isolate}
+    .grain::after{
+      content:'';position:absolute;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity:0.04;pointer-events:none;z-index:1;mix-blend-mode:overlay
+    }
+
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+    .reveal.in{opacity:1;transform:translateY(0)}
+    .stagger .reveal:nth-child(1){transition-delay:0ms}
+    .stagger .reveal:nth-child(2){transition-delay:65ms}
+    .stagger .reveal:nth-child(3){transition-delay:130ms}
+    .stagger .reveal:nth-child(4){transition-delay:195ms}
+    .stagger .reveal:nth-child(5){transition-delay:260ms}
+    .stagger .reveal:nth-child(6){transition-delay:325ms}
+
+    #navbar{transition:background-color .4s ease,border-color .4s ease}
+    #navbar.scrolled{background-color:rgba(10,10,10,.93);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);border-bottom:1px solid rgba(255,255,255,.055)}
+
+    .nav-link{position:relative;transition:color .2s ease}
+    .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:rgba(255,255,255,.65);transition:width .35s cubic-bezier(.16,1,.3,1)}
+    .nav-link:hover{color:rgba(255,255,255,.9)}
+    .nav-link:hover::after{width:100%}
+
+    #mobile-menu{opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+    #mobile-menu.open{opacity:1;visibility:visible}
+    .hb-line{display:block;width:22px;height:1px;background:#fff;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .2s ease;transform-origin:center}
+    #menu-btn.open .hb-line:nth-child(1){transform:translateY(5px) rotate(45deg)}
+    #menu-btn.open .hb-line:nth-child(2){opacity:0}
+    #menu-btn.open .hb-line:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+
+    .hero-grad{background:linear-gradient(to right,#0A0A0A 0%,rgba(10,10,10,.88) 36%,rgba(10,10,10,.38) 62%,transparent 100%)}
+    .hero-grad-mobile{background:linear-gradient(to top,#0A0A0A 0%,rgba(10,10,10,.85) 40%,rgba(10,10,10,.18) 72%,transparent 100%)}
+
+    .eyebrow{display:flex;align-items:center;gap:12px}
+    .eyebrow-line{width:24px;height:1px;opacity:.24;flex-shrink:0}
+    .stat-strip{border-top:1px solid rgba(255,255,255,.07)}
+    .stat-item+.stat-item{border-left:1px solid rgba(255,255,255,.08)}
+
+    @keyframes scroll-line{0%,100%{transform:scaleY(0) translateY(-50%);opacity:0}20%{opacity:1}80%{transform:scaleY(1) translateY(0);opacity:1}}
+    .scroll-line{animation:scroll-line 2.4s ease infinite;transform-origin:top center}
+
+    .svc-card{transition:background .28s cubic-bezier(.4,0,.2,1),transform .28s cubic-bezier(.4,0,.2,1);cursor:default}
+    .svc-card:hover{background-color:#0A0A0A !important;transform:translateY(-4px)}
+    .svc-card:hover .svc-desc{color:rgba(255,255,255,.38) !important}
+    .svc-card:hover .svc-label{color:#fff !important}
+    .svc-card:hover .svc-icon{border-color:rgba(255,255,255,.14) !important;background:rgba(255,255,255,.04)}
+    .svc-card:hover .svc-icon svg{color:#fff}
+    .svc-card:hover .svc-num{color:rgba(255,255,255,.1) !important}
+    .svc-card:active{transform:translateY(-2px)}
+    .svc-label{transition:color .28s ease}
+    .svc-num{transition:color .28s ease}
+
+    .gal-item{overflow:hidden}
+    .gal-item img{transition:transform .65s cubic-bezier(.16,1,.3,1)}
+    .gal-item:hover img{transform:scale(1.05)}
+
+    .pkg-card{transition:transform .38s cubic-bezier(.16,1,.3,1),box-shadow .38s cubic-bezier(.16,1,.3,1)}
+    .pkg-card:hover{transform:translateY(-8px);box-shadow:0 8px 24px rgba(0,0,0,.10),0 36px 72px rgba(0,0,0,.09)}
+    .pkg-card:active{transform:translateY(-3px)}
+
+    .sz-btn{transition:background-color .18s ease,color .18s ease}
+    .sz-btn.active{background-color:#0A0A0A;color:#fff}
+    .sz-btn:active{transform:scale(.93);transition:transform .1s ease}
+
+    .pillar-card{transition:background .28s cubic-bezier(.4,0,.2,1),transform .28s cubic-bezier(.4,0,.2,1)}
+    .pillar-card:hover{background:#F6F6F4 !important;transform:translateY(-3px)}
+    .pillar-card:active{transform:translateY(0)}
+    .pillar-icon{transition:transform .38s cubic-bezier(.16,1,.3,1)}
+    .pillar-card:hover .pillar-icon{transform:scale(1.08) rotate(-5deg)}
+
+    .btn-primary{display:inline-flex;align-items:center;gap:.65rem;padding:.9rem 1.8rem;background:#fff;color:#0A0A0A;font-family:'Outfit',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:background-color .2s ease,transform .15s ease,box-shadow .2s ease;box-shadow:0 4px 20px rgba(255,255,255,.10)}
+    .btn-primary:hover{background:rgba(255,255,255,.9);box-shadow:0 6px 28px rgba(255,255,255,.16)}
+    .btn-primary:active{transform:scale(.97)}
+
+    .btn-ghost{display:inline-flex;align-items:center;gap:.65rem;padding:.9rem 1.8rem;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78);font-family:'Outfit',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;transition:border-color .2s ease,background-color .2s ease,color .2s ease,transform .15s ease}
+    .btn-ghost:hover{border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.05);color:#fff}
+    .btn-ghost:active{transform:scale(.97)}
+
+    .btn-ghost-dark{display:block;width:100%;text-align:center;padding:.78rem 1.25rem;border:1px solid rgba(0,0,0,.11);color:#0A0A0A;font-family:'Outfit',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:background-color .2s ease,color .2s ease,border-color .2s ease,transform .15s ease}
+    .btn-ghost-dark:hover{background:#0A0A0A;color:#fff;border-color:#0A0A0A}
+    .btn-ghost-dark:active{transform:scale(.97)}
+
+    .btn-white-dark{display:block;width:100%;text-align:center;padding:.78rem 1.25rem;background:#fff;color:#0A0A0A;font-family:'Outfit',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;transition:background-color .2s ease,transform .15s ease}
+    .btn-white-dark:hover{background:rgba(255,255,255,.88)}
+    .btn-white-dark:active{transform:scale(.97)}
+
+    .btn-charcoal{display:flex;align-items:center;justify-content:center;gap:.75rem;background:#0A0A0A;color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;padding:1.1rem 2rem;transition:opacity .2s ease,transform .15s ease}
+    .btn-charcoal:hover{opacity:.78}
+    .btn-charcoal:active{transform:scale(.97)}
+
+    .btn-outline-dark{display:flex;align-items:center;justify-content:center;gap:.5rem;border:1px solid rgba(0,0,0,.11);color:#0A0A0A;font-family:'Outfit',sans-serif;font-weight:700;font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;padding:1rem 2rem;transition:background .22s ease,color .22s ease,border-color .22s ease,transform .15s ease}
+    .btn-outline-dark:hover{background:#0A0A0A;color:#fff;border-color:#0A0A0A}
+    .btn-outline-dark:active{transform:scale(.97)}
+
+    .contact-wa-btn{transition:opacity .2s ease,transform .15s ease,box-shadow .2s ease}
+    .contact-wa-btn:hover{opacity:.82;box-shadow:0 8px 32px rgba(0,0,0,.22)}
+    .contact-wa-btn:active{transform:scale(.98)}
+
+    .contact-ig-btn{transition:background .22s ease,color .22s ease,border-color .22s ease,transform .15s ease}
+    .contact-ig-btn:hover{background:#0A0A0A !important;color:#fff !important;border-color:#0A0A0A !important}
+    .contact-ig-btn:active{transform:scale(.98)}
+
+    .maps-link{transition:opacity .2s ease}
+    .maps-link:hover{opacity:.5}
+
+    .price-display{transition:opacity .14s ease,transform .2s cubic-bezier(.16,1,.3,1);display:inline-block}
+    .price-display.fading{opacity:0;transform:translateY(8px)}
+
+    .fab{transition:transform .28s cubic-bezier(.16,1,.3,1),box-shadow .28s ease}
+    .fab:hover{transform:scale(1.1)}
+    .fab:active{transform:scale(.92)}
+
+    @keyframes pulse-ring{0%{transform:scale(1);opacity:.22}100%{transform:scale(1.72);opacity:0}}
+    .pulse-ring{animation:pulse-ring 2.8s cubic-bezier(.16,1,.3,1) infinite}
+
+    /* ── ContainerScroll hero ── */
+    #scroll-title{will-change:transform;transform:translateY(0px)}
+    #scroll-card{will-change:transform;transform:perspective(1200px) rotateX(20deg) scale(1.05);transform-origin:center top}
+    @media(max-width:768px){#scroll-card{transform:perspective(1200px) rotateX(20deg) scale(0.7)}}
+
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important;animation-iteration-count:1 !important}}
+
+    /* ── Reviews marquee ── */
+    .review-marquee-wrap{position:relative;overflow:hidden;margin:0 -24px;padding:8px 0 16px}
+    @media(min-width:1024px){.review-marquee-wrap{margin:0 -48px}}
+    .review-marquee-wrap::before,.review-marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none}
+    .review-marquee-wrap::before{left:0;background:linear-gradient(to right,#0A0A0A,transparent)}
+    .review-marquee-wrap::after{right:0;background:linear-gradient(to left,#0A0A0A,transparent)}
+    .review-track{display:flex;white-space:nowrap}
+    .cas-review-inner{display:inline-flex;gap:14px;padding:8px;animation:cas-review-scroll 55s linear infinite;flex-shrink:0}
+    .cas-review-inner:hover{animation-play-state:paused}
+    .cas-review-card{display:inline-flex;flex-direction:column;gap:10px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:4px;padding:22px 24px;width:300px;white-space:normal;flex-shrink:0;vertical-align:top;transition:border-color .25s ease,box-shadow .25s ease}
+    .cas-review-card:hover{border-color:rgba(255,255,255,0.22);box-shadow:0 8px 32px rgba(0,0,0,.45)}
+    .cas-review-stars{color:#ffffff;font-size:0.78rem;letter-spacing:3px;opacity:.9}
+    .cas-review-text{font-family:'DM Sans',sans-serif;font-size:0.84rem;line-height:1.68;color:rgba(255,255,255,.62);display:-webkit-box;-webkit-line-clamp:4;line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+    .cas-review-author{font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;color:rgba(255,255,255,.9);margin-top:auto;letter-spacing:-.01em}
+    .cas-review-date{font-weight:400;color:rgba(255,255,255,.32);font-family:'DM Sans',sans-serif}
+    @keyframes cas-review-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ── Flip cards (Why CAS) ── */
+    .flip-card{perspective:1200px;cursor:pointer;height:300px}
+    .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.16,1,.3,1)}
+    @media(hover:hover) and (pointer:fine){.flip-card:hover .flip-inner{transform:rotateY(180deg)}}
+    .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+    .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:2px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:2rem 2.2rem}
+    .flip-back{transform:rotateY(180deg)}
+    .flip-hint{font-family:'Outfit',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;opacity:0;transition:opacity .3s ease}
+    .flip-card:hover .flip-hint{opacity:1}
+    @media(hover:none){.flip-hint{opacity:.45}}
+
+    /* ── Package tabs ── */
+    .pkg-tab{padding:.55rem 1.4rem;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;color:rgba(0,0,0,.35);transition:background-color .18s ease,color .18s ease;cursor:pointer;border:none;background:transparent}
+    .pkg-tab.active{background:#0A0A0A;color:#fff}
+    .pkg-panel{display:none}
+    .pkg-panel.active{display:block}
+    .pkg-check{width:16px;height:16px;flex-shrink:0;margin-top:1px;opacity:.5}
+
+    /* ── Service accordion ── */
+    .svc-row{border-top:1px solid rgba(0,0,0,.07);cursor:pointer;overflow:hidden;transition:background-color .4s cubic-bezier(.16,1,.3,1),border-color .4s ease}
+    .svc-row:last-child{border-bottom:1px solid rgba(0,0,0,.07)}
+    .svc-row-head{display:flex;align-items:center;gap:0;padding:1.4rem 0;user-select:none}
+    .svc-row-num{font-family:'Outfit',sans-serif;font-weight:800;line-height:1;color:rgba(0,0,0,.07);letter-spacing:-0.04em;transition:color .4s ease;flex-shrink:0;width:4.5rem;font-size:clamp(2.6rem,5.5vw,4rem)}
+    @media(min-width:768px){.svc-row-num{width:6rem}}
+    .svc-row-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:clamp(1.05rem,2.3vw,1.5rem);letter-spacing:-0.025em;text-transform:uppercase;color:#0A0A0A;transition:color .4s ease;flex:1}
+    .svc-row-brief{display:none;font-family:'DM Sans',sans-serif;font-size:.8rem;color:rgba(0,0,0,.3);line-height:1.5;max-width:34ch;text-align:right;transition:color .4s ease;padding-right:2.5rem}
+    @media(min-width:900px){.svc-row-brief{display:block}}
+    .svc-row-arrow{flex-shrink:0;width:34px;height:34px;border:1px solid rgba(0,0,0,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .4s ease,border-color .4s ease}
+    .svc-row-arrow svg{transition:transform .5s cubic-bezier(.16,1,.3,1)}
+    .svc-row-body{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.16,1,.3,1)}
+    .svc-row-body-inner{padding:0 0 2rem 4.5rem;display:flex;flex-direction:column;gap:1rem}
+    @media(min-width:768px){.svc-row-body-inner{padding:0 0 2.2rem 6rem;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:3rem}}
+    .svc-row-body-text{font-family:'DM Sans',sans-serif;font-size:.92rem;color:rgba(255,255,255,.48);line-height:1.78;max-width:54ch}
+    .svc-row-badge{display:inline-block;font-family:'Outfit',sans-serif;font-weight:700;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.12);padding:.32rem .8rem;border-radius:2px;flex-shrink:0;white-space:nowrap;align-self:flex-start}
+    @media(min-width:768px){.svc-row-badge{align-self:flex-end}}
+    .svc-row.open{background-color:#0A0A0A;border-color:rgba(255,255,255,.05) !important}
+    .svc-row.open .svc-row-num{color:rgba(255,255,255,.055)}
+    .svc-row.open .svc-row-title{color:#ffffff}
+    .svc-row.open .svc-row-brief{color:rgba(255,255,255,.26)}
+    .svc-row.open .svc-row-arrow{background:#ffffff;border-color:#ffffff}
+    .svc-row.open .svc-row-arrow svg{transform:rotate(45deg)}
+    .svc-row.open .svc-row-body{max-height:220px}
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12 flex h-[68px] lg:h-[80px] items-center justify-between gap-6">
+    <a href="#" aria-label="Carbon Auto Studio — home">
+      <img src="brand_assets/cas-logo1.png" alt="Carbon Auto Studio" class="cas-logo h-11 lg:h-[52px] w-auto" />
+    </a>
+    <div class="hidden lg:flex items-center gap-9 text-white/35 text-[0.67rem] tracking-[0.18em] uppercase font-heading font-bold">
+      <a href="#services"   class="nav-link">Services</a>
+      <a href="#mobile-van" class="nav-link">Mobile Van</a>
+      <a href="#gallery"    class="nav-link">Gallery</a>
+      <a href="#why-cas"    class="nav-link">Why CAS</a>
+      <a href="#reviews"    class="nav-link">Reviews</a>
+      <a href="#packages"   class="nav-link">Packages</a>
+      <a href="#contact"    class="nav-link">Contact</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener"
+         class="hidden lg:inline-flex items-center gap-2.5 px-5 py-2.5 border border-white/[0.16] text-white/80 rounded-sm text-[0.65rem] tracking-[0.12em] uppercase font-heading font-bold hover:bg-white hover:text-charcoal hover:border-white active:scale-[0.97] transition-colors duration-200">
+        <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.859L.065 23.455c-.094.307.012.641.27.833.142.104.308.155.474.155.108 0 .218-.021.32-.065l5.824-2.358C8.384 22.73 10.157 23.2 12 23.2 18.627 23.2 24 17.826 24 11.2 24 5.373 18.627 0 12 0zm0 21.818c-1.676 0-3.31-.42-4.752-1.215l-.339-.194-3.529 1.429 1.154-3.398-.222-.35C3.286 16.735 2.4 14.919 2.4 12c0-5.29 4.31-9.6 9.6-9.6s9.6 4.31 9.6 9.6-4.31 9.6-9.6 9.6z"/></svg>
+        WhatsApp
+      </a>
+      <button id="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false"
+              class="lg:hidden flex flex-col gap-[5.5px] p-2 -mr-1">
+        <span class="hb-line"></span><span class="hb-line"></span><span class="hb-line"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-charcoal flex flex-col items-center justify-center pointer-events-none">
+  <nav class="pointer-events-auto flex flex-col items-center gap-8 text-white/55 font-heading font-bold uppercase"
+       style="font-size:clamp(1.8rem,7vw,2.4rem);letter-spacing:-0.01em;">
+    <a href="#services"   class="hover:text-white transition-colors duration-200" onclick="closeMenu()">Services</a>
+    <a href="#mobile-van" class="hover:text-white transition-colors duration-200" onclick="closeMenu()">Mobile Van</a>
+    <a href="#gallery"    class="hover:text-white transition-colors duration-200" onclick="closeMenu()">Gallery</a>
+    <a href="#why-cas"    class="hover:text-white transition-colors duration-200" onclick="closeMenu()">Why CAS</a>
+    <a href="#reviews"    class="hover:text-white transition-colors duration-200" onclick="closeMenu()">Reviews</a>
+    <a href="#packages"   class="hover:text-white transition-colors duration-200" onclick="closeMenu()">Packages</a>
+    <a href="#contact"    class="hover:text-white transition-colors duration-200" onclick="closeMenu()">Contact</a>
+  </nav>
+  <a href="https://wa.me/97332331314" target="_blank" rel="noopener"
+     class="mt-12 btn-ghost text-base pointer-events-auto">Book via WhatsApp</a>
+  <p class="mt-5 text-white/18 text-[0.62rem] tracking-[0.18em] uppercase font-heading">@carbonautostudio</p>
+</div>
+
+
+<!-- HERO (ContainerScroll) -->
+<section id="hero" class="bg-charcoal" style="height:220vh;position:relative;">
+  <div id="hero-sticky" class="grain bg-charcoal overflow-hidden flex flex-col items-center"
+       style="position:sticky;top:0;height:100dvh;">
+
+    <!-- subtle radial glow -->
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 100% 55% at 50% 95%,rgba(255,255,255,.024) 0%,transparent 68%);pointer-events:none;z-index:0;"></div>
+
+    <!-- Title block — slides up as you scroll -->
+    <div id="scroll-title" class="relative z-10 text-center flex flex-col items-center px-6"
+         style="padding-top:clamp(80px,11vh,108px);">
+      <div class="eyebrow justify-center mb-5">
+        <span class="eyebrow-line bg-white"></span>
+        <span class="text-[0.62rem] tracking-[0.24em] uppercase text-white/38 font-heading font-bold">Tubli · Bahrain</span>
+        <span class="eyebrow-line bg-white"></span>
+      </div>
+      <h1 class="font-heading font-bold text-white uppercase"
+          style="font-size:clamp(2.8rem,6.2vw,5.6rem);letter-spacing:-0.03em;line-height:1.04;">
+        Premium<br>Car Care.
+      </h1>
+      <p class="text-white/42 mt-4" style="font-size:.96rem;line-height:1.78;font-family:'DM Sans',sans-serif;max-width:36ch;">
+        Studio services and a mobile van that comes to you. One standard — exceptional.
+      </p>
+      <div class="flex flex-wrap gap-3 mt-7 justify-center">
+        <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-primary">
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.859L.065 23.455c-.094.307.012.641.27.833.142.104.308.155.474.155.108 0 .218-.021.32-.065l5.824-2.358C8.384 22.73 10.157 23.2 12 23.2 18.627 23.2 24 17.826 24 11.2 24 5.373 18.627 0 12 0zm0 21.818c-1.676 0-3.31-.42-4.752-1.215l-.339-.194-3.529 1.429 1.154-3.398-.222-.35C3.286 16.735 2.4 14.919 2.4 12c0-5.29 4.31-9.6 9.6-9.6s9.6 4.31 9.6 9.6-4.31 9.6-9.6 9.6z"/></svg>
+          Book Now
+        </a>
+        <a href="#services" class="btn-ghost">
+          Our Services
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll card — unfolds from rotateX(20deg) to flat -->
+    <div id="scroll-card" class="relative z-[5] mx-auto"
+         style="margin-top:clamp(24px,3.5vh,44px);
+                width:min(1080px,calc(100% - 48px));
+                height:clamp(180px,33vw,500px);
+                border-radius:10px;
+                border:1px solid rgba(255,255,255,0.1);
+                background:#0d0d0d;
+                overflow:hidden;
+                box-shadow:0 0 #0000004d,0 9px 20px #0000004a,0 37px 37px #00000042,0 84px 50px #00000026,0 149px 60px #0000000a,0 233px 65px #00000003;">
+      <img src="brand_assets/cas-hero.png" alt="Carbon Auto Studio" class="w-full h-full object-cover object-center" />
+      <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(10,10,10,.6) 0%,rgba(10,10,10,.08) 55%,transparent 100%);"></div>
+      <!-- card branding bar -->
+      <div class="absolute bottom-5 left-7 right-7 flex items-center justify-between">
+        <img src="brand_assets/cas-logo1.png" alt="CAS" style="height:26px;width:auto;opacity:.85;" />
+        <span style="font-family:'Outfit',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);">Premium Car Care · Bahrain</span>
+      </div>
+    </div>
+
+    <!-- Stats pinned to bottom -->
+    <div class="absolute bottom-8 left-0 right-0 flex justify-center z-10 px-6">
+      <div class="grid grid-cols-3 stat-strip max-w-[300px] w-full">
+        <div class="stat-item pr-5">
+          <p class="font-heading font-bold text-white text-xl leading-none mb-1.5" style="letter-spacing:-0.02em;">300+</p>
+          <p class="text-white/32 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Cars Served</p>
+        </div>
+        <div class="stat-item px-5">
+          <p class="font-heading font-bold text-white text-xl leading-none mb-1.5" style="letter-spacing:-0.02em;">2</p>
+          <p class="text-white/32 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Ways to Book</p>
+        </div>
+        <div class="stat-item pl-5">
+          <p class="font-heading font-bold text-white text-xl leading-none mb-1.5" style="letter-spacing:-0.02em;">9AM</p>
+          <p class="text-white/32 text-[0.58rem] tracking-[0.16em] uppercase font-heading">Open Daily</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll hint -->
+    <div class="absolute bottom-9 right-12 hidden lg:flex items-center gap-3 text-white/20 z-10">
+      <div class="w-px h-9 bg-white/12 overflow-hidden">
+        <div class="w-full h-full bg-white/45 scroll-line"></div>
+      </div>
+      <span class="text-[0.58rem] tracking-[0.22em] uppercase font-heading">Scroll</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SERVICES -->
+<section id="services" class="bg-white py-28 lg:py-40">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+
+    <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16 pb-8 border-b border-black/[0.07]">
+      <div>
+        <div class="eyebrow mb-4">
+          <span class="eyebrow-line bg-black"></span>
+          <span class="text-[0.62rem] tracking-[0.22em] uppercase text-black/38 font-heading font-bold">Studio · Tubli</span>
+        </div>
+        <h2 class="font-heading font-bold text-charcoal uppercase leading-none"
+            style="font-size:clamp(2.6rem,5.5vw,4.4rem);letter-spacing:-0.035em;">
+          What<br>We Do
+        </h2>
+      </div>
+      <p class="text-black/36 text-[0.9rem] lg:max-w-[34ch] lg:text-right" style="line-height:1.74;">
+        Every service performed with precision at our Tubli studio. Drop your car off — we handle the rest.
+      </p>
+    </div>
+
+    <!-- Service accordion -->
+    <div class="mb-16">
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">01</span>
+          <span class="svc-row-title">Wash</span>
+          <span class="svc-row-brief">Foam cannon · hand dry · rim clean · final touch spray</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">A thorough foam cannon wash followed by hand dry, rim cleaning, and a final touch spray. The foundation of every great detail — done properly.</p>
+            <span class="svc-row-badge">Exterior Care</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">02</span>
+          <span class="svc-row-title">Ceramic Wash</span>
+          <span class="svc-row-brief">Ceramic-infused formula · hydrophobic protection · gloss boost</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">A ceramic-infused wash that deposits a light hydrophobic layer over your paint — water beads, dirt slides off, gloss stays longer between washes.</p>
+            <span class="svc-row-badge">Exterior + Protection</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">03</span>
+          <span class="svc-row-title">Wax</span>
+          <span class="svc-row-brief">Hand-applied carnauba · deep gloss · UV shield</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">Hand-applied carnauba wax for a rich, warm gloss and lasting UV protection. Old school chemistry, irreplaceable results.</p>
+            <span class="svc-row-badge">Paint Protection</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">04</span>
+          <span class="svc-row-title">Polish</span>
+          <span class="svc-row-brief">Machine correction · swirls removed · paint restored</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">Machine compounding removes swirl marks, light scratches, and oxidation from clear coat. Your paint's original depth and clarity — restored.</p>
+            <span class="svc-row-badge">Paint Correction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">05</span>
+          <span class="svc-row-title">Nano Ceramic</span>
+          <span class="svc-row-brief">Bonded coating · 2–5 year protection · glass-like finish</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">Professional ceramic coating chemically bonded to your clear coat. Hydrophobic, scratch-resistant, glass-like gloss. Protection that lasts 2 to 5 years.</p>
+            <span class="svc-row-badge">Long-Term Coating</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">06</span>
+          <span class="svc-row-title">Interior Detail</span>
+          <span class="svc-row-brief">Full deep clean · leather care · every surface</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">Full interior deep clean — carpets extracted, leather conditioned, dash and console treated, vents cleared, door pockets, headliner, and every surface in between.</p>
+            <span class="svc-row-badge">Interior</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">07</span>
+          <span class="svc-row-title">PPF</span>
+          <span class="svc-row-brief">Self-healing film · optically clear · physical armour</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">Clear paint protection film applied to high-impact panels. Self-healing against light scratches, optically invisible, guards against chips and road debris for years.</p>
+            <span class="svc-row-badge">Film Protection</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">08</span>
+          <span class="svc-row-title">Graphene</span>
+          <span class="svc-row-brief">Next-gen coating · heat dissipation · extreme repellency</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">Graphene-infused coating with superior heat dissipation and extreme water repellency. Harder, slicker, and more thermally stable than standard ceramic.</p>
+            <span class="svc-row-badge">Advanced Coating</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="svc-row reveal" onclick="toggleSvc(this)">
+        <div class="svc-row-head">
+          <span class="svc-row-num">09</span>
+          <span class="svc-row-title">Window Tinting</span>
+          <span class="svc-row-brief">Heat rejection · UV block · privacy film</span>
+          <div class="svc-row-arrow"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5.5 1v9M1 5.5h9"/></svg></div>
+        </div>
+        <div class="svc-row-body">
+          <div class="svc-row-body-inner">
+            <p class="svc-row-body-text">Professional-grade tint film applied bubble-free for significant heat rejection, UV protection, glare reduction, and privacy. Lifetime of comfort.</p>
+            <span class="svc-row-badge">Tint</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="reveal grid grid-cols-2 lg:grid-cols-3 gap-3 mb-16">
+      <div class="relative gal-item rounded-sm overflow-hidden" style="aspect-ratio:3/4;">
+        <img src="brand_assets/cas-hero.png" alt="Porsche Panamera in CAS studio" class="w-full h-full object-cover object-[center_38%]" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4"><span class="text-white/52 text-[0.58rem] tracking-[0.18em] uppercase font-heading font-bold">Porsche Panamera</span></div>
+      </div>
+      <div class="relative gal-item rounded-sm overflow-hidden" style="aspect-ratio:3/4;">
+        <img src="brand_assets/cas-cruiser.png" alt="Land Cruiser in CAS studio" class="w-full h-full object-cover object-[center_38%]" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4"><span class="text-white/52 text-[0.58rem] tracking-[0.18em] uppercase font-heading font-bold">Land Cruiser</span></div>
+      </div>
+      <div class="relative gal-item rounded-sm overflow-hidden hidden lg:block" style="aspect-ratio:3/4;">
+        <img src="brand_assets/cas-bentley.png" alt="Bentley in CAS studio" class="w-full h-full object-cover object-top" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4"><span class="text-white/52 text-[0.58rem] tracking-[0.18em] uppercase font-heading font-bold">Bentley</span></div>
+      </div>
+    </div>
+
+    <div class="reveal pt-10 border-t border-black/[0.07] flex flex-col sm:flex-row items-center justify-between gap-6">
+      <p class="text-black/36 text-[0.88rem] max-w-[44ch]" style="line-height:1.74;">Not sure which service is right for your car? Message us — we'll point you in the right direction.</p>
+      <a href="https://wa.me/97332331314" target="_blank" rel="noopener"
+         class="btn-ghost-dark flex-shrink-0" style="display:inline-flex;width:auto;">Ask via WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- MOBILE VAN -->
+<section id="mobile-van" class="grain relative bg-charcoal py-28 lg:py-40 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+       style="background:radial-gradient(ellipse at 88% 20%,rgba(255,255,255,.024) 0%,transparent 52%),radial-gradient(ellipse at 12% 90%,rgba(255,255,255,.014) 0%,transparent 45%)"></div>
+  <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-12 gap-14 lg:gap-20 items-start">
+
+      <div class="lg:col-span-5">
+        <div class="reveal eyebrow mb-6">
+          <span class="eyebrow-line bg-white"></span>
+          <span class="text-[0.62rem] tracking-[0.22em] uppercase text-white/38 font-heading font-bold">CAS Mobile Van</span>
+        </div>
+        <h2 class="reveal font-heading font-bold text-white uppercase leading-none mb-8"
+            style="font-size:clamp(2.6rem,5.5vw,4.6rem);letter-spacing:-0.03em;">
+          WE COME<br>TO YOU.
+        </h2>
+        <p class="reveal text-white/40 mb-12 max-w-[40ch]"
+           style="font-size:.96rem;line-height:1.78;font-family:'DM Sans',sans-serif;">
+          Skip the trip. Our fully equipped mobile van brings studio-quality car care to your home, office, or anywhere in Bahrain.
+        </p>
+
+        <div class="reveal space-y-0 divide-y divide-white/[0.06] mb-12">
+          <div class="flex items-start gap-5 py-5">
+            <span class="flex-shrink-0 mt-1 w-[18px] h-[18px] border border-white/22 rounded-full flex items-center justify-center">
+              <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+            </span>
+            <div>
+              <p class="font-heading font-bold text-white uppercase text-[0.72rem] tracking-[0.14em] mb-1.5">We Come to You</p>
+              <p class="text-white/34 text-[0.84rem]" style="line-height:1.65;">Home, office, or any location — we bring the studio to your door</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-5 py-5">
+            <span class="flex-shrink-0 mt-1 w-[18px] h-[18px] border border-white/22 rounded-full flex items-center justify-center">
+              <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+            </span>
+            <div>
+              <p class="font-heading font-bold text-white uppercase text-[0.72rem] tracking-[0.14em] mb-1.5">Full Package Range</p>
+              <p class="text-white/34 text-[0.84rem]" style="line-height:1.65;">Wash and detail packages for every vehicle size — S, M, and L</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-5 py-5">
+            <span class="flex-shrink-0 mt-1 w-[18px] h-[18px] border border-white/22 rounded-full flex items-center justify-center">
+              <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+            </span>
+            <div>
+              <p class="font-heading font-bold text-white uppercase text-[0.72rem] tracking-[0.14em] mb-1.5">Book via WhatsApp</p>
+              <p class="text-white/34 text-[0.84rem]" style="line-height:1.65;">Message us to schedule — quick, simple, no hassle</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-primary">
+            Book Mobile Van
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 flex flex-col gap-3">
+        <div class="reveal relative gal-item rounded-sm overflow-hidden" style="aspect-ratio:16/7;">
+          <img src="brand_assets/cas-van-closed.png" alt="CAS Carbon Auto Studio mobile van"
+               class="h-full object-cover object-left-top" style="width:108%;max-width:none;" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <span class="inline-flex items-center px-3 py-1.5 border border-white/[0.16] bg-black/50 backdrop-blur-sm rounded-sm text-white text-[0.58rem] tracking-[0.18em] uppercase font-heading font-bold">
+              CAS Mobile Van
+            </span>
+          </div>
+        </div>
+        <div class="reveal relative gal-item rounded-sm overflow-hidden" style="aspect-ratio:16/7;">
+          <img src="brand_assets/cas-van-open.png" alt="CAS mobile van open with full equipment"
+               class="h-full object-cover object-left-top" style="width:108%;max-width:none;" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/12 to-transparent"></div>
+          <div class="absolute bottom-4 left-4">
+            <p class="text-white/48 text-[0.58rem] tracking-[0.18em] uppercase font-heading font-bold">Fully Equipped · Comes to You</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- BEFORE & AFTER -->
+<section id="gallery" class="grain relative bg-charcoal py-28 lg:py-40 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+       style="background:radial-gradient(ellipse at 18% 72%,rgba(255,255,255,.016) 0%,transparent 48%)"></div>
+  <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-12">
+
+    <div class="reveal mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div>
+        <div class="eyebrow mb-4">
+          <span class="eyebrow-line bg-white"></span>
+          <span class="text-[0.62rem] tracking-[0.22em] uppercase text-white/38 font-heading font-bold">Results</span>
+        </div>
+        <h2 class="font-heading font-bold text-white uppercase leading-none"
+            style="font-size:clamp(2.6rem,5.5vw,4.4rem);letter-spacing:-0.035em;">
+          Before &amp;<br>After
+        </h2>
+      </div>
+      <p class="text-white/28 text-[0.88rem] lg:max-w-[30ch] lg:text-right" style="line-height:1.74;">
+        Drag the handle to compare the transformation.
+      </p>
+    </div>
+
+    <div class="reveal mb-10">
+      <div class="ba-slider rounded-sm overflow-hidden select-none"
+           style="position:relative;aspect-ratio:16/9;cursor:col-resize;">
+        <img src="brand_assets/b-a4.1.png" alt="Interior seats — after"
+             class="absolute inset-0 w-full h-full object-cover" draggable="false" />
+        <div class="ba-before-clip absolute inset-0 overflow-hidden" style="width:50%;">
+          <img src="brand_assets/b-a4.png" alt="Interior seats — before"
+               class="ba-before-img absolute top-0 left-0 h-full object-cover" draggable="false"
+               style="width:100%;max-width:none;" />
+        </div>
+        <div class="ba-line absolute top-0 bottom-0 z-10 pointer-events-none"
+             style="left:50%;width:1px;background:rgba(255,255,255,.65);"></div>
+        <div class="ba-handle absolute top-1/2 z-20 -translate-y-1/2 -translate-x-1/2" style="left:50%;">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center"
+               style="box-shadow:0 2px 20px rgba(0,0,0,.55),0 0 0 1.5px rgba(255,255,255,.25);">
+            <svg class="w-5 h-5 text-charcoal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l-3 3 3 3M16 9l3 3-3 3"/>
+            </svg>
+          </div>
+        </div>
+        <span class="absolute top-5 left-5 z-10 inline-flex px-3 py-1.5 bg-black/65 border border-white/[0.16] backdrop-blur-sm rounded-sm text-white text-[0.58rem] tracking-[0.2em] uppercase font-heading font-bold pointer-events-none">Before</span>
+        <span class="absolute top-5 right-5 z-10 inline-flex px-3 py-1.5 bg-white/10 border border-white/25 backdrop-blur-sm rounded-sm text-white text-[0.58rem] tracking-[0.2em] uppercase font-heading font-bold pointer-events-none">After</span>
+      </div>
+      <p class="mt-4 text-white/22 text-[0.62rem] font-heading tracking-[0.14em] uppercase text-center">Drag to compare</p>
+    </div>
+
+    <div class="reveal text-center">
+      <p class="text-white/26 text-[0.84rem] mb-6">See more on Instagram</p>
+      <a href="https://instagram.com/carbonautostudio" target="_blank" rel="noopener" class="btn-ghost inline-flex">
+        @carbonautostudio
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHY CAS -->
+<section id="why-cas" class="bg-white py-28 lg:py-40">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-[1fr_1.85fr] gap-16 lg:gap-24 items-start">
+
+      <!-- Left sticky column -->
+      <div class="reveal lg:sticky lg:top-28">
+        <div class="eyebrow mb-5">
+          <span class="eyebrow-line bg-black"></span>
+          <span class="text-[0.62rem] tracking-[0.22em] uppercase text-black/38 font-heading font-bold">Our Standard</span>
+        </div>
+        <h2 class="font-heading font-bold text-charcoal uppercase leading-none mb-7"
+            style="font-size:clamp(3rem,6vw,5.2rem);letter-spacing:-0.035em;">
+          Why<br>CAS
+        </h2>
+        <p style="color:rgba(0,0,0,.4);line-height:1.78;font-size:.9rem;max-width:30ch;font-family:'DM Sans',sans-serif;" class="mb-3">
+          Premium products, trained hands, a standard that doesn't change — regardless of what you drive.
+        </p>
+        <p style="color:rgba(0,0,0,.28);font-size:.76rem;font-family:'DM Sans',sans-serif;letter-spacing:.02em;" class="mb-10">
+          Hover each card to reveal the detail.
+        </p>
+        <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-charcoal mb-3">
+          <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.859L.065 23.455c-.094.307.012.641.27.833.142.104.308.155.474.155.108 0 .218-.021.32-.065l5.824-2.358C8.384 22.73 10.157 23.2 12 23.2 18.627 23.2 24 17.826 24 11.2 24 5.373 18.627 0 12 0zm0 21.818c-1.676 0-3.31-.42-4.752-1.215l-.339-.194-3.529 1.429 1.154-3.398-.222-.35C3.286 16.735 2.4 14.919 2.4 12c0-5.29 4.31-9.6 9.6-9.6s9.6 4.31 9.6 9.6-4.31 9.6-9.6 9.6z"/></svg>
+          Book on WhatsApp
+        </a>
+        <a href="#packages" class="btn-outline-dark">
+          See Packages
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: 2×2 flip cards -->
+      <div class="stagger grid sm:grid-cols-2 gap-4">
+
+        <!-- Card 1: Studio Grade Products -->
+        <div class="flip-card reveal" onclick="this.classList.toggle('flipped')" tabindex="0" role="button" aria-label="Studio Grade Products — flip for details">
+          <div class="flip-inner">
+            <div class="flip-face flip-front bg-charcoal" style="background:#0d0d0d;">
+              <span class="font-heading font-bold text-white/[0.06]" style="font-size:5.5rem;line-height:1;letter-spacing:-0.04em;align-self:flex-start;">01</span>
+              <div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center mb-4" style="background:rgba(255,255,255,.08);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
+                </div>
+                <h3 class="font-heading font-bold text-white uppercase text-[.95rem] tracking-tight leading-tight mb-2">Studio Grade<br>Products</h3>
+                <p class="flip-hint text-white/40">Tap to reveal →</p>
+              </div>
+            </div>
+            <div class="flip-face flip-back bg-white border border-black/[0.1]">
+              <div class="w-10 h-10 rounded-full bg-charcoal flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-bold text-charcoal uppercase text-[.9rem] tracking-tight leading-snug mb-3">Studio Grade Products</h3>
+                <p class="text-[.84rem]" style="color:rgba(0,0,0,.55);line-height:1.78;font-family:'DM Sans',sans-serif;">Ceramic Snow Foam, ProtectorWax, graphene coatings — no substitutes, no shortcuts. Every product is selected for results, not cost.</p>
+              </div>
+              <div class="pt-4 border-t border-black/[0.07]">
+                <span class="font-heading font-bold text-charcoal text-[.62rem] tracking-[.14em] uppercase">Premium only. No exceptions.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Studio & Mobile -->
+        <div class="flip-card reveal" onclick="this.classList.toggle('flipped')" tabindex="0" role="button" aria-label="Studio and Mobile — flip for details">
+          <div class="flip-inner">
+            <div class="flip-face flip-front" style="background:#111;">
+              <span class="font-heading font-bold text-white/[0.06]" style="font-size:5.5rem;line-height:1;letter-spacing:-0.04em;align-self:flex-start;">02</span>
+              <div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center mb-4" style="background:rgba(255,255,255,.08);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+                </div>
+                <h3 class="font-heading font-bold text-white uppercase text-[.95rem] tracking-tight leading-tight mb-2">Studio &amp;<br>Mobile</h3>
+                <p class="flip-hint text-white/40">Tap to reveal →</p>
+              </div>
+            </div>
+            <div class="flip-face flip-back bg-white border border-black/[0.1]">
+              <div class="w-10 h-10 rounded-full bg-charcoal flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-bold text-charcoal uppercase text-[.9rem] tracking-tight leading-snug mb-3">Studio &amp; Mobile</h3>
+                <p class="text-[.84rem]" style="color:rgba(0,0,0,.55);line-height:1.78;font-family:'DM Sans',sans-serif;">Come to us in Tubli, or we come to you — anywhere in Bahrain. Same hands, same products, same finish either way.</p>
+              </div>
+              <div class="pt-4 border-t border-black/[0.07]">
+                <span class="font-heading font-bold text-charcoal text-[.62rem] tracking-[.14em] uppercase">Two ways. One standard.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Fast Booking -->
+        <div class="flip-card reveal" onclick="this.classList.toggle('flipped')" tabindex="0" role="button" aria-label="Fast Booking — flip for details">
+          <div class="flip-inner">
+            <div class="flip-face flip-front" style="background:#0d0d0d;">
+              <span class="font-heading font-bold text-white/[0.06]" style="font-size:5.5rem;line-height:1;letter-spacing:-0.04em;align-self:flex-start;">03</span>
+              <div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center mb-4" style="background:rgba(255,255,255,.08);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
+                </div>
+                <h3 class="font-heading font-bold text-white uppercase text-[.95rem] tracking-tight leading-tight mb-2">Fast<br>Booking</h3>
+                <p class="flip-hint text-white/40">Tap to reveal →</p>
+              </div>
+            </div>
+            <div class="flip-face flip-back bg-white border border-black/[0.1]">
+              <div class="w-10 h-10 rounded-full bg-charcoal flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-bold text-charcoal uppercase text-[.9rem] tracking-tight leading-snug mb-3">Fast Booking</h3>
+                <p class="text-[.84rem]" style="color:rgba(0,0,0,.55);line-height:1.78;font-family:'DM Sans',sans-serif;">Message us on WhatsApp and get your slot confirmed fast. No forms, no waiting rooms, no back-and-forth.</p>
+              </div>
+              <div class="pt-4 border-t border-black/[0.07]">
+                <span class="font-heading font-bold text-charcoal text-[.62rem] tracking-[.14em] uppercase">WhatsApp → done.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: One Standard -->
+        <div class="flip-card reveal" onclick="this.classList.toggle('flipped')" tabindex="0" role="button" aria-label="One Standard Every Car — flip for details">
+          <div class="flip-inner">
+            <div class="flip-face flip-front" style="background:#111;">
+              <span class="font-heading font-bold text-white/[0.06]" style="font-size:5.5rem;line-height:1;letter-spacing:-0.04em;align-self:flex-start;">04</span>
+              <div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center mb-4" style="background:rgba(255,255,255,.08);">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
+                </div>
+                <h3 class="font-heading font-bold text-white uppercase text-[.95rem] tracking-tight leading-tight mb-2">One Standard,<br>Every Car</h3>
+                <p class="flip-hint text-white/40">Tap to reveal →</p>
+              </div>
+            </div>
+            <div class="flip-face flip-back bg-white border border-black/[0.1]">
+              <div class="w-10 h-10 rounded-full bg-charcoal flex items-center justify-center flex-shrink-0">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-heading font-bold text-charcoal uppercase text-[.9rem] tracking-tight leading-snug mb-3">One Standard, Every Car</h3>
+                <p class="text-[.84rem]" style="color:rgba(0,0,0,.55);line-height:1.78;font-family:'DM Sans',sans-serif;">Daily drivers to GT3s — every vehicle gets the same care, the same attention, the same finish. Your car isn't a number.</p>
+              </div>
+              <div class="pt-4 border-t border-black/[0.07]">
+                <span class="font-heading font-bold text-charcoal text-[.62rem] tracking-[.14em] uppercase">Every car. Every time.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- REVIEWS -->
+<section id="reviews" class="grain py-28 lg:py-36" style="background:#0A0A0A;">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+    <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 lg:mb-16">
+      <div>
+        <div class="eyebrow mb-5">
+          <span class="eyebrow-line bg-white"></span>
+          <span class="text-[0.62rem] font-heading font-bold uppercase tracking-[0.18em] text-white/40">Client Reviews</span>
+        </div>
+        <h2 class="font-heading font-bold text-white leading-[1.06]"
+            style="font-size:clamp(2.4rem,5vw,4rem);letter-spacing:-0.035em;">
+          Trusted by<br>Bahrain's Car Owners
+        </h2>
+      </div>
+      <div class="reveal flex items-center gap-3 shrink-0">
+        <div class="text-right">
+          <p class="font-heading font-bold text-white leading-none" style="font-size:2rem;letter-spacing:-0.04em;">5.0</p>
+          <div style="color:#fff;font-size:0.78rem;letter-spacing:3px;margin:4px 0 2px;">★★★★★</div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:0.68rem;color:rgba(255,255,255,.35);letter-spacing:.14em;text-transform:uppercase;">16 Google Reviews</p>
+        </div>
+        <svg class="opacity-50 shrink-0" width="36" height="36" viewBox="0 0 24 24" fill="none">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee strip -->
+  <div class="review-marquee-wrap">
+    <div class="review-track">
+      <div class="cas-review-inner" aria-label="Customer reviews">
+        <!-- Card 1 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"I took my car to Carbon Auto Studio for a PPF job and I'm really happy with the result. The finish came out very clean and neat, and you can tell they pay attention to detail. Very professional team and easy to deal with."</p>
+          <div class="cas-review-author">Arham Khan <span class="cas-review-date">· 2 months ago</span></div>
+        </div>
+        <!-- Card 2 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"By far the best car wash and mobile wash service I have used for my car. No one details it the way these guys do — extremely professional and experienced. I'm now a regular customer."</p>
+          <div class="cas-review-author">Omar Abid <span class="cas-review-date">· 4 months ago · Local Guide</span></div>
+        </div>
+        <!-- Card 3 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Excellent service and attention to detail! The team did an amazing job with the foam wash and full car detailing. The car came out looking spotless and driving like new. Staff were professional, friendly, and handled everything carefully."</p>
+          <div class="cas-review-author">Mohamed Jagah <span class="cas-review-date">· Local Guide</span></div>
+        </div>
+        <!-- Card 4 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"My car came out amazing, and they did it under the time frame I gave them. Haseeb was very responsive and my car came out like new. Would highly recommend!"</p>
+          <div class="cas-review-author">Mohammed D <span class="cas-review-date">· 4 months ago · Local Guide</span></div>
+        </div>
+        <!-- Card 5 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Great service and attention to detail. The team was professional, and my car looks fantastic. Very satisfied with the results and would definitely recommend."</p>
+          <div class="cas-review-author">Hasan G <span class="cas-review-date">· 4 months ago</span></div>
+        </div>
+        <!-- Card 6 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Great customer service and attention to detail. We went for the platinum detailing package and the car looked brand new — driving experience noticeably improved."</p>
+          <div class="cas-review-author">Subhan Ahmed <span class="cas-review-date">· 5 months ago · Local Guide</span></div>
+        </div>
+        <!-- Card 7 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"I had a great experience with Carbon Auto Studio. I have a toddler, so my car gets messy, but they did an amazing job cleaning every detail inside. What really stood out was that the owner personally called me afterward to check if I was satisfied. That level of care is rare."</p>
+          <div class="cas-review-author">Rashed Al Bin Ali <span class="cas-review-date">· 1 month ago</span></div>
+        </div>
+        <!-- Card 8 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Extremely satisfied with the service, my car has never looked better. Highly recommend!"</p>
+          <div class="cas-review-author">Asna Wajid <span class="cas-review-date">· 1 month ago</span></div>
+        </div>
+        <!-- Card 9 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Amazing service. My car hasn't looked this good since new."</p>
+          <div class="cas-review-author">Ebrahim Amir <span class="cas-review-date">· 7 months ago</span></div>
+        </div>
+        <!-- Card 10 -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Very happy with the result and the great customer service."</p>
+          <div class="cas-review-author">Ammar A <span class="cas-review-date">· 7 months ago</span></div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"I took my car to Carbon Auto Studio for a PPF job and I'm really happy with the result. The finish came out very clean and neat, and you can tell they pay attention to detail. Very professional team and easy to deal with."</p>
+          <div class="cas-review-author">Arham Khan <span class="cas-review-date">· 2 months ago</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"By far the best car wash and mobile wash service I have used for my car. No one details it the way these guys do — extremely professional and experienced. I'm now a regular customer."</p>
+          <div class="cas-review-author">Omar Abid <span class="cas-review-date">· 4 months ago · Local Guide</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Excellent service and attention to detail! The team did an amazing job with the foam wash and full car detailing. The car came out looking spotless and driving like new. Staff were professional, friendly, and handled everything carefully."</p>
+          <div class="cas-review-author">Mohamed Jagah <span class="cas-review-date">· Local Guide</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"My car came out amazing, and they did it under the time frame I gave them. Haseeb was very responsive and my car came out like new. Would highly recommend!"</p>
+          <div class="cas-review-author">Mohammed D <span class="cas-review-date">· 4 months ago · Local Guide</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Great service and attention to detail. The team was professional, and my car looks fantastic. Very satisfied with the results and would definitely recommend."</p>
+          <div class="cas-review-author">Hasan G <span class="cas-review-date">· 4 months ago</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Great customer service and attention to detail. We went for the platinum detailing package and the car looked brand new — driving experience noticeably improved."</p>
+          <div class="cas-review-author">Subhan Ahmed <span class="cas-review-date">· 5 months ago · Local Guide</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"I had a great experience with Carbon Auto Studio. I have a toddler, so my car gets messy, but they did an amazing job cleaning every detail inside. What really stood out was that the owner personally called me afterward to check if I was satisfied. That level of care is rare."</p>
+          <div class="cas-review-author">Rashed Al Bin Ali <span class="cas-review-date">· 1 month ago</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Extremely satisfied with the service, my car has never looked better. Highly recommend!"</p>
+          <div class="cas-review-author">Asna Wajid <span class="cas-review-date">· 1 month ago</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Amazing service. My car hasn't looked this good since new."</p>
+          <div class="cas-review-author">Ebrahim Amir <span class="cas-review-date">· 7 months ago</span></div>
+        </div>
+        <div class="cas-review-card">
+          <div class="cas-review-stars">★★★★★</div>
+          <p class="cas-review-text">"Very happy with the result and the great customer service."</p>
+          <div class="cas-review-author">Ammar A <span class="cas-review-date">· 7 months ago</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="bg-off-white py-28 lg:py-40">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+
+    <!-- Header row -->
+    <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
+      <div>
+        <div class="eyebrow mb-4">
+          <span class="eyebrow-line bg-black"></span>
+          <span class="text-[0.62rem] tracking-[0.22em] uppercase text-black/38 font-heading font-bold">Mobile Van</span>
+        </div>
+        <h2 class="font-heading font-bold text-charcoal uppercase leading-none"
+            style="font-size:clamp(2.6rem,5.5vw,4.4rem);letter-spacing:-0.035em;">
+          Packages &amp;<br>Pricing
+        </h2>
+      </div>
+      <!-- Controls: size + category tabs -->
+      <div class="reveal flex flex-wrap items-center gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-[0.62rem] text-black/38 tracking-[0.18em] uppercase font-heading font-bold">Size:</span>
+          <div class="flex gap-1 bg-white border border-black/[0.09] rounded-sm p-1" style="box-shadow:0 1px 6px rgba(0,0,0,.06);">
+            <button class="sz-btn active px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm" data-size="S" onclick="setSize('S')">S</button>
+            <button class="sz-btn px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm text-black/30" data-size="M" onclick="setSize('M')">M</button>
+            <button class="sz-btn px-4 py-2 text-[0.68rem] font-heading font-bold uppercase tracking-widest rounded-sm text-black/30" data-size="L" onclick="setSize('L')">L</button>
+          </div>
+        </div>
+        <div class="flex gap-1 bg-white border border-black/[0.09] rounded-sm p-1" style="box-shadow:0 1px 6px rgba(0,0,0,.06);">
+          <button class="pkg-tab active" data-tab="wash" onclick="switchPkgTab('wash')">Wash</button>
+          <button class="pkg-tab" data-tab="detail" onclick="switchPkgTab('detail')">Detail</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- WASH panel -->
+    <div class="pkg-panel active stagger" data-panel="wash">
+      <div class="grid md:grid-cols-3 gap-5">
+
+        <!-- Foam Wash -->
+        <div class="pkg-card reveal bg-white border border-black/[0.07] rounded-sm overflow-hidden flex flex-col" style="box-shadow:0 2px 12px rgba(0,0,0,.05);">
+          <div class="px-7 pt-8 pb-6 border-b border-black/[0.06]">
+            <p class="text-[0.6rem] tracking-[0.2em] uppercase font-heading font-bold text-black/30 mb-2">Wash · 01</p>
+            <h3 class="font-heading font-bold text-charcoal uppercase text-[1.05rem] tracking-tight leading-tight">Foam Wash</h3>
+          </div>
+          <div class="px-7 pt-7 pb-5 flex-1">
+            <div class="flex items-baseline gap-2 mb-7">
+              <span class="price-display font-heading font-bold text-charcoal" style="font-size:3rem;letter-spacing:-0.04em;line-height:1;" data-s="7" data-m="8" data-l="9">7</span>
+              <span class="font-heading font-bold text-charcoal/40 text-[0.8rem] tracking-tight">BD</span>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);line-height:1.5;">
+                <svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Foam Wash</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);line-height:1.5;">
+                <svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Wipe Down &amp; Vacuum</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);line-height:1.5;">
+                <svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Rim Cleaning</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);line-height:1.5;">
+                <svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Final Touch Spray</li>
+            </ul>
+          </div>
+          <div class="px-7 pb-7 pt-2"><a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-ghost-dark">Book Now</a></div>
+        </div>
+
+        <!-- Ceramic Wash -->
+        <div class="pkg-card reveal bg-white border border-black/[0.07] rounded-sm overflow-hidden flex flex-col" style="box-shadow:0 2px 12px rgba(0,0,0,.05);">
+          <div class="px-7 pt-8 pb-6 border-b border-black/[0.06]">
+            <p class="text-[0.6rem] tracking-[0.2em] uppercase font-heading font-bold text-black/30 mb-2">Wash · 02</p>
+            <h3 class="font-heading font-bold text-charcoal uppercase text-[1.05rem] tracking-tight leading-tight">Ceramic Wash</h3>
+          </div>
+          <div class="px-7 pt-7 pb-5 flex-1">
+            <div class="flex items-baseline gap-2 mb-7">
+              <span class="price-display font-heading font-bold text-charcoal" style="font-size:3rem;letter-spacing:-0.04em;line-height:1;" data-s="9" data-m="10" data-l="11">9</span>
+              <span class="font-heading font-bold text-charcoal/40 text-[0.8rem] tracking-tight">BD</span>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);line-height:1.5;">
+                <svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ceramic Wash</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);line-height:1.5;">
+                <svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Wipe Down &amp; Vacuum</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);line-height:1.5;">
+                <svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Rim Cleaning</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);line-height:1.5;">
+                <svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ceramic Final Touch Spray</li>
+            </ul>
+          </div>
+          <div class="px-7 pb-7 pt-2"><a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-ghost-dark">Book Now</a></div>
+        </div>
+
+        <!-- CAS Special Wash (featured) -->
+        <div class="pkg-card reveal bg-charcoal rounded-sm overflow-hidden flex flex-col border border-white/[0.05]" style="box-shadow:0 8px 40px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.18);">
+          <div class="px-7 pt-8 pb-6 border-b border-white/[0.07]">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-[0.6rem] tracking-[0.2em] uppercase font-heading font-bold text-white/30">Wash · 03</p>
+              <span class="text-[0.56rem] tracking-[0.14em] uppercase font-heading font-bold text-white/50 border border-white/20 px-2 py-0.5 rounded-sm">Best Value</span>
+            </div>
+            <h3 class="font-heading font-bold text-white uppercase text-[1.05rem] tracking-tight leading-tight">CAS Special Wash</h3>
+          </div>
+          <div class="px-7 pt-7 pb-5 flex-1">
+            <div class="flex items-baseline gap-2 mb-7">
+              <span class="price-display font-heading font-bold text-white" style="font-size:3rem;letter-spacing:-0.04em;line-height:1;" data-s="15" data-m="16" data-l="17">15</span>
+              <span class="font-heading font-bold text-white/40 text-[0.8rem] tracking-tight">BD</span>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50">
+                <svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ceramic Snow Foam</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50">
+                <svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>ProtectorWax Shampoo</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50">
+                <svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Rim Cleaning</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50">
+                <svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Interior + Carpets Steam</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50">
+                <svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Wipe Down</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50">
+                <svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Engine Bay Clean</li>
+            </ul>
+          </div>
+          <div class="px-7 pb-7 pt-2"><a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-white-dark">Book Now</a></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DETAIL panel -->
+    <div class="pkg-panel stagger" data-panel="detail">
+      <div class="grid md:grid-cols-3 gap-5">
+
+        <!-- Interior Refresh -->
+        <div class="pkg-card reveal bg-white border border-black/[0.07] rounded-sm overflow-hidden flex flex-col" style="box-shadow:0 2px 12px rgba(0,0,0,.05);">
+          <div class="px-7 pt-8 pb-6 border-b border-black/[0.06]">
+            <p class="text-[0.6rem] tracking-[0.2em] uppercase font-heading font-bold text-black/30 mb-2">Detail · 01</p>
+            <h3 class="font-heading font-bold text-charcoal uppercase text-[1.05rem] tracking-tight leading-tight">Interior Refresh</h3>
+          </div>
+          <div class="px-7 pt-7 pb-5 flex-1">
+            <div class="flex items-baseline gap-2 mb-7">
+              <span class="price-display font-heading font-bold text-charcoal" style="font-size:3rem;letter-spacing:-0.04em;line-height:1;" data-s="20" data-m="25" data-l="30">20</span>
+              <span class="font-heading font-bold text-charcoal/40 text-[0.8rem] tracking-tight">BD</span>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Foam Wash</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Full Interior Deep Clean</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Leather Care</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Final Touch Spray</li>
+            </ul>
+          </div>
+          <div class="px-7 pb-7 pt-2"><a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-ghost-dark">Book Now</a></div>
+        </div>
+
+        <!-- Exterior Shine -->
+        <div class="pkg-card reveal bg-white border border-black/[0.07] rounded-sm overflow-hidden flex flex-col" style="box-shadow:0 2px 12px rgba(0,0,0,.05);">
+          <div class="px-7 pt-8 pb-6 border-b border-black/[0.06]">
+            <p class="text-[0.6rem] tracking-[0.2em] uppercase font-heading font-bold text-black/30 mb-2">Detail · 02</p>
+            <h3 class="font-heading font-bold text-charcoal uppercase text-[1.05rem] tracking-tight leading-tight">Exterior Shine</h3>
+          </div>
+          <div class="px-7 pt-7 pb-5 flex-1">
+            <div class="flex items-baseline gap-2 mb-7">
+              <span class="price-display font-heading font-bold text-charcoal" style="font-size:3rem;letter-spacing:-0.04em;line-height:1;" data-s="25" data-m="30" data-l="35">25</span>
+              <span class="font-heading font-bold text-charcoal/40 text-[0.8rem] tracking-tight">BD</span>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Exterior Polish</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Interior Light Clean</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Foam Wash</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Headlight Polish</li>
+              <li class="flex items-start gap-3 text-[0.82rem]" style="color:rgba(0,0,0,.5);"><svg class="pkg-check mt-0.5" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Final Touch Spray</li>
+            </ul>
+          </div>
+          <div class="px-7 pb-7 pt-2"><a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-ghost-dark">Book Now</a></div>
+        </div>
+
+        <!-- CAS Full Detail (featured) -->
+        <div class="pkg-card reveal bg-charcoal rounded-sm overflow-hidden flex flex-col border border-white/[0.05]" style="box-shadow:0 8px 40px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.18);">
+          <div class="px-7 pt-8 pb-6 border-b border-white/[0.07]">
+            <div class="flex items-center justify-between mb-2">
+              <p class="text-[0.6rem] tracking-[0.2em] uppercase font-heading font-bold text-white/30">Detail · 03</p>
+              <span class="text-[0.56rem] tracking-[0.14em] uppercase font-heading font-bold text-white/50 border border-white/20 px-2 py-0.5 rounded-sm">Complete</span>
+            </div>
+            <h3 class="font-heading font-bold text-white uppercase text-[1.05rem] tracking-tight leading-tight">CAS Full Detail</h3>
+          </div>
+          <div class="px-7 pt-7 pb-5 flex-1">
+            <div class="flex items-baseline gap-2 mb-7">
+              <span class="price-display font-heading font-bold text-white" style="font-size:3rem;letter-spacing:-0.04em;line-height:1;" data-s="35" data-m="40" data-l="45">35</span>
+              <span class="font-heading font-bold text-white/40 text-[0.8rem] tracking-tight">BD</span>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50"><svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Exterior Polish</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50"><svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Interior Deep Clean</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50"><svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Foam Wash</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50"><svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Headlight Polish</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50"><svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Engine Bay Clean</li>
+              <li class="flex items-start gap-3 text-[0.82rem] text-white/50"><svg class="pkg-check mt-0.5 text-white/50" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Final Touch Spray</li>
+            </ul>
+          </div>
+          <div class="px-7 pb-7 pt-2"><a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-white-dark">Book Now</a></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FINAL CTA -->
+<section id="book" class="grain relative bg-charcoal py-32 lg:py-44 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+       style="background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.034) 0%,transparent 55%),radial-gradient(ellipse at 50% 100%,rgba(255,255,255,.018) 0%,transparent 45%)"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-white/[0.06]"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-white/[0.04]"></div>
+
+  <div class="relative z-[2] max-w-[1440px] mx-auto px-6 lg:px-12 text-center">
+    <div class="reveal max-w-3xl mx-auto">
+      <div class="flex items-center justify-center gap-4 mb-8">
+        <span class="w-6 h-px bg-white/22"></span>
+        <span class="text-[0.62rem] tracking-[0.24em] uppercase text-white/32 font-heading font-bold">Book Today</span>
+        <span class="w-6 h-px bg-white/22"></span>
+      </div>
+      <h2 class="font-heading font-bold text-white uppercase leading-none mb-8"
+          style="font-size:clamp(3.4rem,10vw,7rem);letter-spacing:-0.04em;">
+        READY<br>TO BOOK?
+      </h2>
+      <p class="text-white/36 mb-12 max-w-[38ch] mx-auto"
+         style="font-size:.95rem;line-height:1.78;font-family:'DM Sans',sans-serif;">
+        Message us on WhatsApp — we'll confirm your slot in minutes. Studio or mobile, your call.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://wa.me/97332331314" target="_blank" rel="noopener" class="btn-primary">
+          <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.859L.065 23.455c-.094.307.012.641.27.833.142.104.308.155.474.155.108 0 .218-.021.32-.065l5.824-2.358C8.384 22.73 10.157 23.2 12 23.2 18.627 23.2 24 17.826 24 11.2 24 5.373 18.627 0 12 0zm0 21.818c-1.676 0-3.31-.42-4.752-1.215l-.339-.194-3.529 1.429 1.154-3.398-.222-.35C3.286 16.735 2.4 14.919 2.4 12c0-5.29 4.31-9.6 9.6-9.6s9.6 4.31 9.6 9.6-4.31 9.6-9.6 9.6z"/></svg>
+          Message on WhatsApp
+        </a>
+        <a href="tel:+97332331314" class="btn-ghost">Call +973 3233 1314</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="bg-white py-28 lg:py-40">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+
+    <div class="reveal mb-16">
+      <div class="eyebrow mb-5">
+        <span class="eyebrow-line bg-black"></span>
+        <span class="text-[0.62rem] tracking-[0.22em] uppercase text-black/38 font-heading font-bold">Find Us</span>
+      </div>
+      <h2 class="font-heading font-bold text-charcoal uppercase leading-none"
+          style="font-size:clamp(2.6rem,5.5vw,4.4rem);letter-spacing:-0.035em;">
+        Get in Touch
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+      <div class="space-y-8">
+
+        <div class="reveal">
+          <p class="text-[0.62rem] tracking-[0.18em] uppercase text-black/38 font-heading font-bold mb-4">WhatsApp / Call</p>
+          <a href="https://wa.me/97332331314" target="_blank" rel="noopener"
+             class="contact-wa-btn flex items-center gap-4 bg-charcoal text-white rounded-sm"
+             style="padding:1.25rem 1.6rem;">
+            <span class="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.859L.065 23.455c-.094.307.012.641.27.833.142.104.308.155.474.155.108 0 .218-.021.32-.065l5.824-2.358C8.384 22.73 10.157 23.2 12 23.2 18.627 23.2 24 17.826 24 11.2 24 5.373 18.627 0 12 0zm0 21.818c-1.676 0-3.31-.42-4.752-1.215l-.339-.194-3.529 1.429 1.154-3.398-.222-.35C3.286 16.735 2.4 14.919 2.4 12c0-5.29 4.31-9.6 9.6-9.6s9.6 4.31 9.6 9.6-4.31 9.6-9.6 9.6z"/></svg>
+            </span>
+            <div>
+              <p class="font-heading font-bold text-white text-xl" style="letter-spacing:-0.02em;line-height:1.1;">+973 3233 1314</p>
+              <p class="text-white/40 text-[0.62rem] font-heading mt-0.5 tracking-[0.12em] uppercase">WhatsApp or Call</p>
+            </div>
+            <svg class="w-4 h-4 text-white/32 ml-auto flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+
+        <div class="reveal">
+          <p class="text-[0.62rem] tracking-[0.18em] uppercase text-black/38 font-heading font-bold mb-4">Instagram</p>
+          <a href="https://instagram.com/carbonautostudio" target="_blank" rel="noopener"
+             class="contact-ig-btn flex items-center gap-4 border border-black/[0.09] text-charcoal rounded-sm"
+             style="padding:1.25rem 1.6rem;">
+            <span class="w-11 h-11 rounded-full border border-black/[0.09] flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <div>
+              <p class="font-heading font-bold text-[1.05rem]" style="line-height:1.1;">@carbonautostudio</p>
+              <p class="text-[0.62rem] font-heading mt-0.5 tracking-[0.12em] uppercase" style="color:rgba(0,0,0,.36);">Follow us</p>
+            </div>
+            <svg class="w-4 h-4 ml-auto flex-shrink-0" style="color:rgba(0,0,0,.26);" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+
+        <div class="reveal grid grid-cols-2 gap-6 pt-2">
+          <div>
+            <p class="text-[0.62rem] tracking-[0.18em] uppercase text-black/38 font-heading font-bold mb-3">Studio</p>
+            <a href="https://maps.google.com/?q=KP+Plaza+Road+130+Block+701+Tubli+Bahrain"
+               target="_blank" rel="noopener"
+               class="maps-link not-italic font-heading font-bold text-charcoal text-sm inline-flex flex-col"
+               style="line-height:1.7;text-decoration:none;">
+              Bldg 1044, KP Plaza<br>Rd 130, Blk 701<br>Tubli, Bahrain
+              <span class="inline-flex items-center gap-1 mt-1 text-[0.62rem] tracking-[0.12em] uppercase font-bold" style="color:rgba(0,0,0,.32);">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+                Open in Maps
+              </span>
+            </a>
+          </div>
+          <div>
+            <p class="text-[0.62rem] tracking-[0.18em] uppercase text-black/38 font-heading font-bold mb-3">Hours</p>
+            <p class="font-heading font-bold text-charcoal text-lg leading-none mb-1" style="letter-spacing:-0.02em;">9AM – 8PM</p>
+            <p class="text-mid-gray text-[0.68rem] font-heading font-bold uppercase tracking-[0.12em]">Sat – Thu</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reveal">
+        <div class="rounded-sm overflow-hidden border border-black/[0.07]" style="aspect-ratio:4/3;">
+          <iframe
+            src="https://maps.google.com/maps?q=KP+Plaza+Road+130+Block+701+Tubli+Bahrain&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%" height="100%"
+            style="border:0;display:block;"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Carbon Auto Studio location"></iframe>
+        </div>
+        <a href="https://maps.google.com/?q=KP+Plaza+Road+130+Block+701+Tubli+Bahrain"
+           target="_blank" rel="noopener"
+           class="maps-link mt-4 flex items-center gap-2 text-charcoal font-heading font-bold text-sm uppercase tracking-[0.08em]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/>
+          </svg>
+          Open in Google Maps
+          <svg class="w-3 h-3 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-charcoal border-t border-white/[0.055] py-10">
+  <div class="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-5">
+    <img src="brand_assets/cas-logo1.png" alt="Carbon Auto Studio" class="cas-logo h-8 w-auto" />
+    <p class="text-white/18 text-[0.62rem] font-heading tracking-[0.1em]">&copy; 2025 Carbon Auto Studio. All rights reserved.</p>
+    <a href="https://instagram.com/carbonautostudio" target="_blank" rel="noopener"
+       class="text-white/22 text-[0.62rem] font-heading tracking-[0.12em] uppercase hover:text-white/55"
+       style="transition:color .2s ease;">@carbonautostudio</a>
+  </div>
+</footer>
+
+
+<!-- WHATSAPP FAB -->
+<div class="fixed bottom-6 right-6 z-50">
+  <span class="pulse-ring absolute inset-0 rounded-full bg-white/12 pointer-events-none"></span>
+  <a href="https://wa.me/97332331314" target="_blank" rel="noopener"
+     aria-label="Book via WhatsApp"
+     class="fab relative flex items-center justify-center w-[54px] h-[54px] bg-charcoal border border-white/18 rounded-full"
+     style="box-shadow:0 4px 20px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.07);">
+    <svg class="w-[22px] h-[22px] text-white" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.122 1.528 5.859L.065 23.455c-.094.307.012.641.27.833.142.104.308.155.474.155.108 0 .218-.021.32-.065l5.824-2.358C8.384 22.73 10.157 23.2 12 23.2 18.627 23.2 24 17.826 24 11.2 24 5.373 18.627 0 12 0zm0 21.818c-1.676 0-3.31-.42-4.752-1.215l-.339-.194-3.529 1.429 1.154-3.398-.222-.35C3.286 16.735 2.4 14.919 2.4 12c0-5.29 4.31-9.6 9.6-9.6s9.6 4.31 9.6 9.6-4.31 9.6-9.6 9.6z"/>
+    </svg>
+  </a>
+</div>
+
+
+<script>
+  // ── ContainerScroll hero ──────────────────────────────────────
+  (function () {
+    const hero    = document.getElementById('hero');
+    const titleEl = document.getElementById('scroll-title');
+    const cardEl  = document.getElementById('scroll-card');
+    if (!hero || !titleEl || !cardEl) return;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    function tick() {
+      const scrolled  = window.scrollY;
+      const sectionH  = hero.offsetHeight;
+      const vh        = window.innerHeight;
+      const progress  = Math.max(0, Math.min(1, scrolled / (sectionH - vh)));
+
+      const isMobile  = window.innerWidth <= 768;
+      const scaleFrom = isMobile ? 0.7  : 1.05;
+      const scaleTo   = isMobile ? 0.9  : 1.0;
+
+      const rotate = lerp(20, 0, progress);
+      const scale  = lerp(scaleFrom, scaleTo, progress);
+      const ty     = lerp(0, -100, progress);
+
+      titleEl.style.transform = `translateY(${ty}px)`;
+      cardEl.style.transform  = `perspective(1200px) rotateX(${rotate}deg) scale(${scale})`;
+    }
+
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
+    tick();
+  })();
+
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 24); }, { passive: true });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let isOpen = false;
+  menuBtn.addEventListener('click', () => {
+    isOpen = !isOpen;
+    menuBtn.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.classList.toggle('open', isOpen);
+    mobileMenu.style.pointerEvents = isOpen ? 'all' : 'none';
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  function closeMenu() {
+    isOpen = false;
+    menuBtn.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('open');
+    mobileMenu.style.pointerEvents = 'none';
+    document.body.style.overflow = '';
+  }
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -28px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Logo bg removal
+  function stripLogoBg(img) {
+    const c = document.createElement('canvas');
+    c.width = img.naturalWidth; c.height = img.naturalHeight;
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    const d = ctx.getImageData(0, 0, c.width, c.height);
+    const px = d.data;
+    for (let i = 0; i < px.length; i += 4) {
+      const lum = px[i] * 0.299 + px[i+1] * 0.587 + px[i+2] * 0.114;
+      if (lum < 80) { px[i+3] = 0; }
+      else if (lum < 160) { px[i+3] = Math.round(((lum - 80) / 80) * 255); }
+    }
+    ctx.putImageData(d, 0, 0);
+    img.src = c.toDataURL('image/png');
+  }
+  document.querySelectorAll('.cas-logo').forEach(img => {
+    if (img.complete && img.naturalWidth) stripLogoBg(img);
+    else img.addEventListener('load', () => stripLogoBg(img));
+  });
+
+  // Before/After slider
+  document.querySelectorAll('.ba-slider').forEach(slider => {
+    const clip = slider.querySelector('.ba-before-clip');
+    const img  = slider.querySelector('.ba-before-img');
+    const line = slider.querySelector('.ba-line');
+    const handle = slider.querySelector('.ba-handle');
+    let dragging = false;
+    function setPos(clientX) {
+      const rect = slider.getBoundingClientRect();
+      const pct = Math.max(2, Math.min(98, ((clientX - rect.left) / rect.width) * 100));
+      clip.style.width = pct + '%';
+      img.style.width  = rect.width + 'px';
+      line.style.left  = pct + '%';
+      handle.style.left = pct + '%';
+    }
+    function syncWidth() { img.style.width = slider.getBoundingClientRect().width + 'px'; }
+    window.addEventListener('resize', syncWidth);
+    if (img.complete) syncWidth(); else img.addEventListener('load', syncWidth);
+    handle.addEventListener('mousedown',  e => { dragging = true; e.preventDefault(); });
+    handle.addEventListener('touchstart', () => { dragging = true; }, { passive: true });
+    slider.addEventListener('click', e => setPos(e.clientX));
+    window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+    window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('mouseup',  () => { dragging = false; });
+    window.addEventListener('touchend', () => { dragging = false; });
+  });
+
+  // Service accordion
+  function toggleSvc(row) {
+    const isOpen = row.classList.contains('open');
+    document.querySelectorAll('.svc-row.open').forEach(r => r.classList.remove('open'));
+    if (!isOpen) row.classList.add('open');
+  }
+
+  // Package size toggle
+  function setSize(size) {
+    document.querySelectorAll('.sz-btn').forEach(btn => {
+      const active = btn.dataset.size === size;
+      btn.classList.toggle('active', active);
+      btn.classList.toggle('text-black/30', !active);
+    });
+    const prices = document.querySelectorAll('.price-display');
+    prices.forEach(el => el.classList.add('fading'));
+    setTimeout(() => {
+      prices.forEach(el => { el.textContent = el.dataset[size.toLowerCase()]; el.classList.remove('fading'); });
+    }, 140);
+  }
+
+  function switchPkgTab(tab) {
+    document.querySelectorAll('.pkg-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    const panels = document.querySelectorAll('.pkg-panel');
+    panels.forEach(p => {
+      const show = p.dataset.panel === tab;
+      if (show) {
+        p.style.display = 'block';
+        p.classList.add('active');
+        // re-trigger reveal animations
+        p.querySelectorAll('.reveal').forEach(el => {
+          el.classList.remove('in');
+          requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
+        });
+      } else {
+        p.style.display = 'none';
+        p.classList.remove('active');
+      }
+    });
+  }
+</script>
+</body>
+</html>
